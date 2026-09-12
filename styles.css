@@ -249,7 +249,8 @@ main {
 .hero-cta {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .social-links {
@@ -572,6 +573,79 @@ main {
     color: var(--text-muted);
 }
 
+/* 42 Projects */
+.section-intro {
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+}
+
+.sys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.sys-card {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.sys-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--accent-glow);
+}
+
+.sys-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.sys-header h4 {
+    font-size: 1.25rem;
+}
+
+.sys-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.sys-tag {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+}
+
+.sys-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.sys-learned {
+    color: var(--text-main);
+    font-size: 0.88rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 0.8rem;
+    margin-top: auto;
+}
+
+.sys-learned strong {
+    color: var(--accent);
+}
+
 /* Education */
 .edu-featured {
     display: grid;
@@ -809,6 +883,9 @@ footer {
         gap: 1rem;
     }
     .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .sys-grid {
         grid-template-columns: 1fr;
     }
     .edu-featured {
