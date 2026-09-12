@@ -16,6 +16,7 @@
     --text: #f4f7fb;
     --muted: #8ea3c0;
     --steel: #78a6d8;
+    --steel-bright: #8ec8ff;
     --accent-warm: #ff8a3d;
 
     /* Typography */
@@ -93,6 +94,10 @@ a:hover {
 
 .hl {
     color: var(--accent-warm);
+}
+
+.hl-soft {
+    color: var(--steel-bright);
 }
 
 ul {
