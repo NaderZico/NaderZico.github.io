@@ -382,9 +382,6 @@ main {
 }
 
 .section-title {
-    display: flex;
-    align-items: baseline;
-    gap: 0.7rem;
     font-size: clamp(1.7rem, 3vw, 2.3rem);
     font-weight: 800;
     letter-spacing: -0.025em;
@@ -397,6 +394,8 @@ main {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--steel);
+    margin-right: 0.7rem;
+    vertical-align: 0.15em;
 }
 
 .section-intro {
@@ -604,6 +603,12 @@ main {
 
 .project-header h4 {
     margin-bottom: 0;
+}
+
+.project-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .project-link {
