@@ -673,6 +673,22 @@ main {
     color: var(--muted);
 }
 
+/* Projects band (groups Featured + 42 sections) */
+.projects-band {
+    background: linear-gradient(180deg, rgba(120, 166, 216, 0.08) 0%, rgba(120, 166, 216, 0.03) 100%);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+
+.projects-band .section:first-of-type {
+    padding-bottom: 34px;
+}
+
+.projects-band .section:last-of-type {
+    padding-top: 34px;
+}
+
 /* 42 Projects */
 .sys-grid {
     display: grid;
