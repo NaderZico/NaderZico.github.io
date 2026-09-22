@@ -216,7 +216,7 @@ ul {
 
 .nav-content {
     width: 100%;
-    padding: 0 clamp(20px, 4vw, 56px);
+    padding: 0 clamp(16px, 2vw, 24px);
     display: flex;
     justify-content: space-between;
     align-items: center;
