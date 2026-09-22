@@ -372,6 +372,16 @@ main {
     -webkit-text-fill-color: currentColor;
 }
 
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .name .i-tittle {
+        background: linear-gradient(to bottom, var(--accent-warm) 0 38%, var(--text) 38% 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
 .title {
     font-family: var(--font-mono);
     font-size: clamp(0.95rem, 1.8vw, 1.25rem);
