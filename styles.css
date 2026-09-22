@@ -19,6 +19,19 @@
     --steel-bright: #8ec8ff;
     --accent-warm: #ff8a3d;
 
+    /* Theme-aware surfaces */
+    --grid-line: rgba(120, 166, 216, 0.05);
+    --vignette: rgba(5, 8, 15, 0.9);
+    --nav-bg: rgba(5, 8, 15, 0.92);
+    --band-a: rgba(120, 166, 216, 0.05);
+    --band-b: rgba(120, 166, 216, 0.018);
+    --band-shadow: rgba(0, 0, 0, 0.16);
+    --icon-bg: #12263f;
+    --icon-fg: #78a6d8;
+    --portrait-offset: #12263f;
+
+    color-scheme: dark;
+
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-heading: 'Outfit', sans-serif;
@@ -31,6 +44,33 @@
 
     /* Motion */
     --transition-smooth: all 0.18s ease;
+}
+
+/* Light theme */
+[data-theme="light"] {
+    --bg: #f4f6fa;
+    --surface: #ffffff;
+    --surface-2: #eaeff6;
+    --navy: #12263f;
+    --border: #d7dfe9;
+    --border-strong: #b4c3d6;
+    --text: #0e1b2b;
+    --muted: #56657a;
+    --steel: #2f6fb0;
+    --steel-bright: #1a6fd4;
+    --accent-warm: #e06a1e;
+
+    --grid-line: rgba(18, 38, 63, 0.06);
+    --vignette: rgba(244, 246, 250, 0.9);
+    --nav-bg: rgba(244, 246, 250, 0.92);
+    --band-a: rgba(47, 111, 176, 0.038);
+    --band-b: rgba(47, 111, 176, 0.012);
+    --band-shadow: rgba(18, 38, 63, 0.07);
+    --icon-bg: #e3ecf7;
+    --icon-fg: #2f6fb0;
+    --portrait-offset: #bcd4ee;
+
+    color-scheme: light;
 }
 
 * {
@@ -60,8 +100,8 @@ body::before {
     inset: 0;
     z-index: -2;
     background-image:
-        linear-gradient(to right, rgba(120, 166, 216, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(120, 166, 216, 0.05) 1px, transparent 1px);
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
     background-size: 44px 44px;
     pointer-events: none;
 }
@@ -71,7 +111,7 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: radial-gradient(circle at 50% 0%, rgba(5, 8, 15, 0) 0%, rgba(5, 8, 15, 0.9) 78%);
+    background: radial-gradient(circle at 50% 0%, transparent 0%, var(--vignette) 78%);
     pointer-events: none;
 }
 
@@ -169,15 +209,14 @@ ul {
 }
 
 .navbar.scrolled {
-    background: rgba(5, 8, 15, 0.92);
+    background: var(--nav-bg);
     border-bottom: 1px solid var(--border);
     padding: 0.8rem 0;
 }
 
 .nav-content {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 clamp(20px, 4vw, 56px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -199,6 +238,7 @@ ul {
     display: flex;
     gap: 1.6rem;
     align-items: center;
+    margin-left: auto;
 }
 
 .nav-links a:not(.btn-primary) {
@@ -246,6 +286,49 @@ ul {
 
 .nav-toggle[aria-expanded="true"] span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: 1.5rem;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.theme-toggle:hover {
+    color: var(--accent-warm);
+}
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+    display: inline;
 }
 
 /* Main Layout */
@@ -358,7 +441,7 @@ main {
     border-radius: var(--radius);
     background: radial-gradient(circle at 50% 25%, var(--surface-2) 0%, var(--bg) 75%);
     overflow: hidden;
-    box-shadow: 16px 16px 0 0 var(--navy);
+    box-shadow: 16px 16px 0 0 var(--portrait-offset);
 }
 
 .hero-image-wrapper picture {
@@ -480,14 +563,14 @@ main {
 .skill-icon {
     width: 42px;
     height: 42px;
-    background: var(--navy);
+    background: var(--icon-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    color: var(--steel);
+    color: var(--icon-fg);
 }
 
 .skill-icon svg {
@@ -675,10 +758,10 @@ main {
 
 /* Projects band (groups Featured + 42 sections) */
 .projects-band {
-    background: linear-gradient(180deg, rgba(120, 166, 216, 0.08) 0%, rgba(120, 166, 216, 0.03) 100%);
-    border: 1px solid var(--border-strong);
+    background: linear-gradient(180deg, var(--band-a) 0%, var(--band-b) 100%);
+    border: 1px solid var(--border);
     border-radius: 6px;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 24px 48px var(--band-shadow);
 }
 
 .projects-band .section:first-of-type {
@@ -787,14 +870,14 @@ main {
 .edu-featured-icon {
     width: 44px;
     height: 44px;
-    background: var(--navy);
+    background: var(--icon-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: var(--steel);
+    color: var(--icon-fg);
 }
 
 .edu-featured-icon svg {
