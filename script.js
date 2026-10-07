@@ -69,6 +69,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Screenshot viewer: click a project screenshot to read it at full size
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && typeof lightbox.showModal === 'function') {
+        const lightboxImg = lightbox.querySelector('img');
+        document.querySelectorAll('.shot').forEach(button => {
+            button.addEventListener('click', () => {
+                const img = button.querySelector('img');
+                lightboxImg.src = img.currentSrc || img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.showModal();
+            });
+        });
+        // Clicking the backdrop or the close button closes it; Escape works natively
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) lightbox.close();
+        });
+    }
+
     // Anchor links scroll smoothly through CSS (scroll-behavior), which also
     // keeps the URL hash and keyboard focus working and respects reduced motion.
 });
