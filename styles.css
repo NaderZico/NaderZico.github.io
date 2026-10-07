@@ -58,7 +58,7 @@
     --muted: #56657a;
     --steel: #2f6fb0;
     --steel-bright: #1a6fd4;
-    --accent-warm: #e06a1e;
+    --accent-warm: #aa5017;
 
     --grid-line: rgba(18, 38, 63, 0.06);
     --vignette: rgba(244, 246, 250, 0.9);
@@ -547,7 +547,7 @@ main {
 
 .highlight-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--muted);
@@ -631,7 +631,7 @@ main {
 .timeline-date {
     font-family: var(--font-mono);
     color: var(--steel);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 0.5rem;
@@ -736,7 +736,7 @@ main {
 .project-subtitle {
     font-family: var(--font-mono);
     color: var(--steel);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 1rem;
@@ -762,7 +762,7 @@ main {
     border-radius: var(--radius);
     padding: 0.25rem 0.6rem;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--muted);
 }
 
@@ -973,7 +973,7 @@ main {
 .project-metrics span {
     display: block;
     margin-top: 0.2rem;
-    font-size: 0.74rem;
+    font-size: 0.75rem;
     line-height: 1.4;
     color: var(--muted);
 }
@@ -1067,7 +1067,7 @@ main {
     border: 1px solid var(--border);
     color: var(--steel);
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     padding: 0.15rem 0.5rem;
@@ -1091,7 +1091,7 @@ main {
 .sys-learned strong {
     color: var(--accent-warm);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
@@ -1153,7 +1153,7 @@ main {
 .edu-date {
     font-family: var(--font-mono);
     color: var(--steel);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: flex;
@@ -1168,7 +1168,7 @@ main {
     background: transparent;
     border: 1px solid var(--steel);
     color: var(--steel);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     padding: 0.15rem 0.55rem;
@@ -1463,5 +1463,56 @@ button:focus-visible {
     }
     .hero-cta {
         gap: 0.8rem;
+        justify-content: center;
+    }
+    /* Phones: a smaller portrait and the buttons right under the title, so the
+       name, role, and both calls to action fit in the first screen */
+    .hero {
+        gap: 1.6rem;
+        padding: 92px 0 40px;
+    }
+    .hero-image-wrapper {
+        width: 172px;
+        height: 238px;
+        box-shadow: 9px 9px 0 0 var(--portrait-offset);
+    }
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .bio {
+        order: 2;
+        margin: 1.6rem auto 0;
+    }
+}
+
+/* Touch screens: comfortable tap targets (44px) */
+@media (pointer: coarse) {
+    .project-link,
+    .social-links a {
+        width: 44px;
+        height: 44px;
+    }
+    .nav-toggle,
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+    }
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 0.35rem;
+        margin-left: -0.35rem;
+    }
+    .project-note a,
+    .section-intro a {
+        padding: 0.85rem 0.4rem;
+        margin: -0.85rem -0.4rem;
+    }
+    .back-link {
+        padding: 0.6rem 0;
+        margin: -0.6rem 0 0.6rem;
     }
 }
