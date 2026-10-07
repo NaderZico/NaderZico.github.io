@@ -774,8 +774,8 @@ main {
 
 .feature-card {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.6rem;
     padding: 1.6rem;
     transition: var(--transition-smooth);
 }
@@ -784,16 +784,17 @@ main {
     border-color: var(--border-strong);
 }
 
-.feature-card.reverse {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-}
-
-.feature-card.reverse .feature-media {
-    order: 2;
-}
-
+/* Screenshots: a row of full, uncropped shots above the text */
 .feature-media {
-    align-self: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.feature-media figure {
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 16 / 10;
+    position: relative;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
@@ -801,22 +802,50 @@ main {
 }
 
 .feature-media img {
-    display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
 }
 
+/* Body: header and metrics across, then description beside problem and note */
 .feature-body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: start;
     min-width: 0;
+}
+
+.feature-body .project-header,
+.feature-body .project-subtitle,
+.feature-body .project-metrics,
+.feature-body .project-tags {
+    grid-column: 1 / -1;
+}
+
+.feature-body .project-desc {
+    grid-column: 1;
+    grid-row: 4 / span 2;
+}
+
+.feature-body .project-problem {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.feature-body .project-note {
+    grid-column: 2;
+    grid-row: 5;
 }
 
 .project-metrics {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.6rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
 .project-metrics li {
@@ -1258,13 +1287,15 @@ button:focus-visible {
         width: 280px;
         height: 387px;
     }
-    .feature-card,
-    .feature-card.reverse {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 1.4rem;
+    .feature-media {
+        flex-direction: column;
     }
-    .feature-card.reverse .feature-media {
-        order: 0;
+    .feature-media figure {
+        flex: none;
+    }
+    .feature-body {
+        display: flex;
+        flex-direction: column;
     }
 }
 
