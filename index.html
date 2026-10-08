@@ -159,8 +159,8 @@
                         <p class="project-subtitle">Full-Stack Web + RAG Assistant</p>
                         <p class="project-desc">Students book faculty office hours from a live calendar, and an AI assistant answers from a knowledge base with citations and prepares bookings and changes that only run after the user confirms. The university theme is sample data; the flow fits any booking use case. Maintainable and strictly typed: Next.js 16, PostgreSQL with pgvector, Prisma, Auth.js, the Vercel AI SDK, Zod validation, a shared service layer, Docker, and CI.</p>
                         <ul class="project-metrics">
-                            <li><strong data-count="450" data-suffix="+">450+</strong><span>unit, integration, and e2e tests</span></li>
-                            <li><strong data-count="112">112</strong><span>live assistant checks passing</span></li>
+                            <li><strong data-count="500" data-suffix="+">500+</strong><span>unit, integration, and e2e tests</span></li>
+                            <li><strong data-count="115">115</strong><span>live assistant checks passing</span></li>
                             <li><strong data-count="93" data-suffix="%">93%</strong><span>of input tokens served from cache</span></li>
                         </ul>
                         <div class="project-highlights">
@@ -169,7 +169,7 @@
                             <li><strong>The AI can't act alone.</strong> Suggested bookings and cancellations need your confirmation before they run.</li>
                             <li><strong>Answers cite their sources.</strong> Replies come from a knowledge base and name the documents used.</li>
                             <li><strong>Concurrency-safe bookings.</strong> Row locks and conditional updates stop simultaneous requests, proven by race tests.</li>
-                            <li><strong>Secure by default.</strong> Nonce-based CSP, per-user and per-IP rate limits, server-side role checks.</li>
+                            <li><strong>Secure by default.</strong> CSP, server-side roles, rate-limited sign-in, and a review-found injection now covered by tests.</li>
                             </ul>
                         </div>
                         <div class="project-tags">
@@ -344,7 +344,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                     </div>
                     <h3>Testing &amp; Delivery</h3>
-                    <p><span class="hl-soft">Vitest, Playwright, PHPUnit</span>, axe accessibility checks, concurrency and race tests, black-box and white-box testing. GitHub Actions CI/CD with tests as quality gates, <span class="hl-soft">Docker and containerization</span>, Sentry error tracking, uptime monitoring, runbooks. Deployed on Render, Neon, and GitHub Pages.</p>
+                    <p><span class="hl-soft">Vitest, Playwright, PHPUnit</span>, axe accessibility checks, concurrency and race tests, black-box and white-box testing. GitHub Actions CI/CD with tests as quality gates, CodeQL and dependency auditing, <span class="hl-soft">Docker and containerization</span>, Sentry error tracking, uptime monitoring, runbooks. Deployed on Render, Neon, and GitHub Pages.</p>
                 </div>
                 <div class="skill-card glass">
                     <div class="skill-icon">
