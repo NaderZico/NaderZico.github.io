@@ -18,6 +18,7 @@
     --steel: #78a6d8;
     --steel-bright: #8ec8ff;
     --accent-warm: #ff8a3d;
+    --accent-text: #ff8a3d;
 
     /* Theme-aware surfaces */
     --grid-line: rgba(120, 166, 216, 0.05);
@@ -58,7 +59,10 @@
     --muted: #56657a;
     --steel: #2f6fb0;
     --steel-bright: #1a6fd4;
-    --accent-warm: #aa5017;
+    /* Vibrant orange for titles, dots, borders, and hover states */
+    --accent-warm: #d9671d;
+    /* Deeper orange for small text, which needs 4.5:1 on light surfaces */
+    --accent-text: #ad5217;
 
     --grid-line: rgba(18, 38, 63, 0.06);
     --vignette: rgba(244, 246, 250, 0.9);
@@ -129,10 +133,17 @@ a {
 }
 
 a:hover {
-    color: var(--accent-warm);
+    color: var(--accent-text);
 }
 
 .hl {
+    color: var(--accent-text);
+}
+
+/* Large display text keeps the vibrant orange */
+.section-title .hl,
+.page-title .hl,
+.highlight-number .hl {
     color: var(--accent-warm);
 }
 
@@ -250,7 +261,7 @@ ul {
 }
 
 .nav-links a:not(.btn-primary):hover {
-    color: var(--accent-warm);
+    color: var(--accent-text);
 }
 
 .nav-toggle {
@@ -925,7 +936,7 @@ main {
 }
 
 .nav-links a[aria-current]:not(.btn-primary) {
-    color: var(--accent-warm);
+    color: var(--accent-text);
 }
 
 /* Screenshot viewer */
@@ -1109,7 +1120,7 @@ main {
 }
 
 .sys-learned strong {
-    color: var(--accent-warm);
+    color: var(--accent-text);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1380,15 +1391,15 @@ footer {
     transform: translateY(0);
 }
 
-/* Cards inside a revealing section rise in one after another (classes added by script.js) */
-.js .fade-in .reveal-item {
+/* Each card rises as it enters the screen (classes added by script.js), in sequence when several enter together */
+.js .reveal-item {
     opacity: 0;
     transform: translateY(14px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
-    transition-delay: calc(var(--i, 0) * 70ms), calc(var(--i, 0) * 70ms), 0s, 0s, 0s;
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+    transition-delay: var(--delay, 0ms), var(--delay, 0ms), 0s, 0s, 0s;
 }
 
-.js .fade-in.visible .reveal-item {
+.js .reveal-item.in {
     opacity: 1;
     transform: none;
 }
@@ -1417,6 +1428,11 @@ footer {
 }
 
 /* Accessibility */
+main section[tabindex="-1"]:focus,
+#hero:focus {
+    outline: none;
+}
+
 .skip-link {
     position: fixed;
     top: 0.75rem;
@@ -1456,7 +1472,7 @@ button:focus-visible {
         opacity: 1;
         transform: none;
     }
-    .js .fade-in .reveal-item {
+    .js .reveal-item {
         opacity: 1;
         transform: none;
         transition: none;

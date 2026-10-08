@@ -12,24 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Intersection Observer for fade-in animations
+    // Section fade-in as each section comes into view
     const fadeElements = document.querySelectorAll('.fade-in');
-
-    // Cards inside a section rise in one after another once it appears
-    // (skipped for reduced motion; the cards are never hidden without this script)
-    const STAGGER = '.skill-card, .timeline-item, .cert-card, .sys-card, .project-card, .highlight-item, .edu-featured-card';
-    const staggered = new Map();
-    if (!reduceMotion && 'IntersectionObserver' in window) {
-        fadeElements.forEach(section => {
-            const items = [...section.querySelectorAll(STAGGER)];
-            items.forEach((el, i) => {
-                el.classList.add('reveal-item');
-                el.style.setProperty('--i', Math.min(i, 8));
-            });
-            if (items.length) staggered.set(section, items);
-        });
-    }
-
     if ('IntersectionObserver' in window) {
         // Reveal as soon as any part is on screen, so tall sections never stay hidden
         const observer = new IntersectionObserver((entries, observer) => {
@@ -37,11 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
-                    const items = staggered.get(entry.target);
-                    if (items) {
-                        // Hand the cards back to their normal hover styles once they have landed
-                        setTimeout(() => items.forEach(el => el.classList.remove('reveal-item')), 1200);
-                    }
                 }
             });
         }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0 });
@@ -51,6 +30,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else {
         fadeElements.forEach(el => el.classList.add('visible'));
+    }
+
+    // Cards rise as each one enters the screen, in sequence when several arrive together.
+    // Watching every card (not its section) keeps this consistent at any window size.
+    // Skipped for reduced motion; cards are never hidden without this script.
+    const CARDS = '.skill-card, .timeline-item, .cert-card, .sys-card, .project-card, .highlight-item, .edu-featured-card, .feature-card, .projects-more';
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+        const cards = [...document.querySelectorAll(CARDS)];
+        cards.forEach(el => el.classList.add('reveal-item'));
+        const cardObserver = new IntersectionObserver(entries => {
+            const arriving = entries
+                .filter(entry => entry.isIntersecting)
+                .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
+            arriving.forEach((entry, i) => {
+                const el = entry.target;
+                el.style.setProperty('--delay', Math.min(i, 6) * 80 + 'ms');
+                el.classList.add('in');
+                cardObserver.unobserve(el);
+                // Hand the card back to its normal hover styles once it has landed
+                setTimeout(() => {
+                    el.classList.remove('reveal-item', 'in');
+                    el.style.removeProperty('--delay');
+                }, 1200 + i * 80);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        cards.forEach(el => cardObserver.observe(el));
     }
 
     // Count-up numbers (the final value is in the HTML, so it also shows without scripts)
@@ -151,6 +156,57 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clicking the backdrop or the close button closes it; Escape works natively
         lightbox.addEventListener('click', (e) => {
             if (e.target !== lightboxImg) lightbox.close();
+        });
+    }
+
+    // In-page links glide to their section. This is done here, not with CSS alone, because some
+    // browsers (Brave among them) turn off CSS smooth scrolling along with their own setting.
+    // Reduced motion keeps the browser's instant jump.
+    let scrollRun = 0;
+    ['wheel', 'touchstart', 'keydown'].forEach(type => {
+        // Any manual scroll input takes over from a running glide
+        window.addEventListener(type, () => { scrollRun++; }, { passive: true });
+    });
+    const glideTo = (targetY, done) => {
+        const root = document.documentElement;
+        const startY = window.scrollY;
+        const destY = Math.max(0, Math.min(targetY, root.scrollHeight - window.innerHeight));
+        const distance = destY - startY;
+        if (Math.abs(distance) < 2) { done(); return; }
+        const duration = Math.min(900, 350 + Math.abs(distance) * 0.12);
+        const run = ++scrollRun;
+        const t0 = performance.now();
+        root.style.scrollBehavior = 'auto';
+        const step = now => {
+            if (run !== scrollRun) { root.style.scrollBehavior = ''; return; }
+            const t = Math.min((now - t0) / duration, 1);
+            window.scrollTo(0, startY + distance * (1 - Math.pow(1 - t, 3)));
+            if (t < 1) {
+                requestAnimationFrame(step);
+            } else {
+                root.style.scrollBehavior = '';
+                done();
+            }
+        };
+        requestAnimationFrame(step);
+    };
+    if (!reduceMotion) {
+        document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                const hash = link.getAttribute('href');
+                const target = hash === '#' ? null : document.getElementById(decodeURIComponent(hash.slice(1)));
+                if (hash !== '#' && !target) return;
+                e.preventDefault();
+                const y = target ? target.getBoundingClientRect().top + window.scrollY : 0;
+                glideTo(y, () => {
+                    history.pushState(null, '', hash === '#' ? location.pathname + location.search : hash);
+                    if (target) {
+                        target.setAttribute('tabindex', '-1');
+                        target.focus({ preventScroll: true });
+                    }
+                });
+            });
         });
     }
 
