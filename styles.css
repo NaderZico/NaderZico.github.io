@@ -19,6 +19,8 @@
     --steel-bright: #8ec8ff;
     --accent-warm: #ff8a3d;
     --accent-text: #ff8a3d;
+    /* Dark text used on top of an orange marker */
+    --on-accent: #05080f;
 
     /* Theme-aware surfaces */
     --grid-line: rgba(120, 166, 216, 0.05);
@@ -63,6 +65,7 @@
     --accent-warm: #d9671d;
     /* Deeper orange for small text, which needs 4.5:1 on light surfaces */
     --accent-text: #ad5217;
+    --on-accent: #0e1b2b;
 
     --grid-line: rgba(18, 38, 63, 0.06);
     --vignette: rgba(244, 246, 250, 0.9);
@@ -1127,35 +1130,17 @@ main {
     letter-spacing: 0.04em;
 }
 
-/* Light theme: small orange text cannot be both vibrant and readable on a light background,
-   so it becomes an orange marker with dark text (4.9:1), and the nav marks the current
-   section with an orange underline instead of orange text */
-[data-theme="light"] .title .hl,
-[data-theme="light"] .highlight-label .hl,
-[data-theme="light"] .sys-learned strong {
+/* "AI" in the hero tagline sits in an orange marker, the same in both themes.
+   Negative side margins cancel the padding so the tagline wraps as it would without it. */
+.title .hl {
     display: inline-block;
     background: var(--accent-warm);
-    color: var(--text);
-    padding: 0.04em 0.42em;
-    border-radius: 3px;
-    line-height: 1.5;
-}
-
-/* Negative side margins cancel the marker's padding, so text wraps exactly as it does in dark mode */
-[data-theme="light"] .title .hl,
-[data-theme="light"] .highlight-label .hl {
+    color: var(--on-accent);
     font-weight: 700;
     padding: 0.04em 0.3em;
     margin: 0 -0.3em 0 -0.2em;
-}
-
-[data-theme="light"] .nav-links a[aria-current]:not(.btn-primary),
-[data-theme="light"] .nav-links a:not(.btn-primary):hover {
-    color: var(--text);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-warm);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 7px;
+    border-radius: 3px;
+    line-height: 1.5;
 }
 
 /* Education */

@@ -45,7 +45,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261009c">
+    <link rel="stylesheet" href="styles.css?v=20261009d">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -201,13 +201,13 @@
                             </div>
                         </div>
                         <p class="project-subtitle">Full-Stack Web App · Capstone Rewrite</p>
-                        <p class="project-desc">A full rewrite of my senior capstone, built to run on free PHP hosting with no cron, SSH, or Node. Students book 5 to 45 minute slots in faculty office hours; faculty set hours, closures, booking rules, and approvals, with undo, reminders, ratings, and a chatbot. React 19 and TypeScript on a framework-free PHP 8.4 API and MariaDB, deployed by GitHub Actions once the tests pass.</p>
+                        <p class="project-desc">A full rewrite of my senior capstone that runs on free PHP hosting. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, a waitlist, and a chatbot. React 19 and TypeScript front end, a framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions once the tests pass.</p>
                         <ul class="project-metrics">
-                            <li><strong>1 of 8</strong><span>racing students gets the slot, tested over HTTP</span></li>
-                            <li><strong>WCAG 2.1 AA</strong><span>axe-checked in light and dark mode</span></li>
-                            <li><strong>0 cron jobs</strong><span>migrations, reminders, and resets run lazily</span></li>
+                            <li><strong data-count="400" data-suffix="+">400+</strong><span>PHPUnit, Vitest, and Playwright tests</span></li>
+                            <li><strong data-count="46">46</strong><span>REST API endpoints, no framework</span></li>
+                            <li><strong>$0</strong><span>hosting cost, deployed by CI</span></li>
                         </ul>
-                        <p class="project-problem sys-learned"><strong>The problem:</strong> two students must never book the same slot. Booking runs in one transaction with row locks taken in a fixed order, and removing the lock makes the race test fail, which is how I know the test works.</p>
+                        <p class="project-problem sys-learned"><strong>The problem:</strong> two students must never book the same slot. Booking runs in one transaction with row locks, and a concurrent-booking test proves it: remove the lock and double bookings appear.</p>
                         <p class="project-note">Use "Try as student" or "Try as faculty" on the login page. Unofficial student project with fictional accounts. The original 2024 capstone: <a href="https://github.com/NaderZico/Student-Faculty-Services" target="_blank" rel="noopener noreferrer">source</a> · <a href="https://student-faculty-services.42web.io" target="_blank" rel="noopener noreferrer">live</a>.</p>
                         <div class="project-tags">
                             <span>React</span>
@@ -466,6 +466,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261009c"></script>
+    <script src="script.js?v=20261009d"></script>
 </body>
 </html>
