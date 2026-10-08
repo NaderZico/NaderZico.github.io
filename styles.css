@@ -19,8 +19,6 @@
     --steel-bright: #8ec8ff;
     --accent-warm: #ff8a3d;
     --accent-text: #ff8a3d;
-    /* Dark text used on top of an orange marker */
-    --on-accent: #05080f;
 
     /* Theme-aware surfaces */
     --grid-line: rgba(120, 166, 216, 0.05);
@@ -65,7 +63,6 @@
     --accent-warm: #d9671d;
     /* Deeper orange for small text, which needs 4.5:1 on light surfaces */
     --accent-text: #ad5217;
-    --on-accent: #0e1b2b;
 
     --grid-line: rgba(18, 38, 63, 0.06);
     --vignette: rgba(244, 246, 250, 0.9);
@@ -1161,17 +1158,16 @@ main {
     color: var(--muted);
 }
 
-/* "AI" in the hero tagline sits in an orange marker, the same in both themes.
-   Negative side margins cancel the padding so the tagline wraps as it would without it. */
+/* "AI" in the hero tagline is bold orange text. From 1040px up the tagline is large text, so it can
+   use the vibrant orange; below that the deeper --accent-text keeps small text readable. */
 .title .hl {
-    display: inline-block;
-    background: var(--accent-warm);
-    color: var(--on-accent);
     font-weight: 700;
-    padding: 0.04em 0.3em;
-    margin: 0 -0.3em 0 -0.2em;
-    border-radius: 3px;
-    line-height: 1.5;
+}
+
+@media (min-width: 1040px) {
+    .title .hl {
+        color: var(--accent-warm);
+    }
 }
 
 /* Education */
