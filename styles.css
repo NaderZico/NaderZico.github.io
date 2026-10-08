@@ -409,6 +409,56 @@ main {
     gap: 1rem 1.25rem;
 }
 
+.hero-credential {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.65rem 1.1rem 0.65rem 0.75rem;
+    margin-bottom: 1.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--accent-warm);
+    border-radius: var(--radius);
+    text-align: left;
+}
+
+.hero-credential-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius);
+    background: var(--icon-bg);
+    color: var(--icon-fg);
+}
+
+.hero-credential-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.hero-credential-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    line-height: 1.35;
+}
+
+.hero-credential-text strong {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.hero-credential-text span {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
 .social-links {
     display: flex;
     gap: 0.6rem;
