@@ -45,7 +45,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261009h">
+    <link rel="stylesheet" href="styles.css?v=20261009j">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -163,8 +163,15 @@
                             <li><strong data-count="112">112</strong><span>live assistant checks passing</span></li>
                             <li><strong data-count="93" data-suffix="%">93%</strong><span>of input tokens served from cache</span></li>
                         </ul>
-                        <p class="project-problem sys-learned"><strong>Engineering highlight:</strong> the AI can't change anything on its own. Every booking or cancellation it suggests appears as a confirmation card, and only runs after you confirm, using the same rules as the rest of the app.</p>
-                        <p class="project-note">One-click guest accounts.</p>
+                        <div class="project-highlights">
+                            <p class="project-highlights-title">Engineering highlights</p>
+                            <ul>
+                            <li><strong>The AI can't act alone.</strong> Suggested bookings and cancellations need your confirmation before they run.</li>
+                            <li><strong>Answers cite their sources.</strong> Replies come from a knowledge base and name the documents used.</li>
+                            <li><strong>No double bookings.</strong> Row locks and conditional updates stop simultaneous requests, proven by race tests.</li>
+                            <li><strong>Hardened by default.</strong> Nonce-based CSP, per-user and per-IP rate limits, server-side role checks.</li>
+                            </ul>
+                        </div>
                         <div class="project-tags">
                             <span>Next.js</span>
                             <span>TypeScript</span>
@@ -204,14 +211,21 @@
                             </div>
                         </div>
                         <p class="project-subtitle">Full-Stack Web App · Capstone Rewrite</p>
-                        <p class="project-desc">A full rewrite of my senior capstone. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, and a waitlist. React 19 and TypeScript front end, a framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions once the tests pass.</p>
+                        <p class="project-desc">A full rewrite of my <a href="https://github.com/NaderZico/Student-Faculty-Services" target="_blank" rel="noopener noreferrer">senior capstone</a>. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, and a waitlist. React 19 and TypeScript front end, a framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions once the tests pass.</p>
                         <ul class="project-metrics">
                             <li><strong data-count="400" data-suffix="+">400+</strong><span>PHPUnit, Vitest, and Playwright tests</span></li>
                             <li><strong data-count="46">46</strong><span>REST API endpoints, no framework</span></li>
                             <li><strong>100/100</strong><span>Lighthouse accessibility and best-practices scores</span></li>
                         </ul>
-                        <p class="project-problem sys-learned"><strong>Engineering highlight:</strong> cancellations can be undone for 10 seconds. The slot is held so nobody else can take it, the other person isn't notified until the window ends, and undo re-checks every rule. Tests with simultaneous requests prove an undo always beats competing bookings.</p>
-                        <p class="project-note">Use "Try as student" or "Try as faculty" on the login page. Unofficial student project with fictional accounts. The original 2024 capstone: <a href="https://github.com/NaderZico/Student-Faculty-Services" target="_blank" rel="noopener noreferrer">source</a> · <a href="https://student-faculty-services.42web.io" target="_blank" rel="noopener noreferrer">live</a>.</p>
+                        <div class="project-highlights">
+                            <p class="project-highlights-title">Engineering highlights</p>
+                            <ul>
+                            <li><strong>Undo that can't lose a slot.</strong> Cancellations can be undone for 10 seconds; the slot is held and undo re-checks every rule.</li>
+                            <li><strong>No double bookings.</strong> One database transaction with row locks, and a test that fails if the lock is removed.</li>
+                            <li><strong>Faculty set the rules.</strong> Minimum notice, session lengths and gaps, plus closures that preview who is affected.</li>
+                            <li><strong>Upkeep runs itself.</strong> Upgrades, reminders and the weekly demo reset run automatically, exactly once.</li>
+                            </ul>
+                        </div>
                         <div class="project-tags">
                             <span>React</span>
                             <span>TypeScript</span>
@@ -484,6 +498,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261009h"></script>
+    <script src="script.js?v=20261009j"></script>
 </body>
 </html>

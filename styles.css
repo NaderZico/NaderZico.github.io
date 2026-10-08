@@ -809,7 +809,7 @@ main {
 
 .feature-card {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
     gap: 2rem;
     padding: 1.4rem;
     transition: var(--transition-smooth);
@@ -877,14 +877,6 @@ main {
 
 .feature-body .project-metrics {
     margin-bottom: 1.1rem;
-}
-
-.feature-body .project-problem {
-    margin-bottom: 0.9rem;
-}
-
-.feature-body .project-note {
-    margin-bottom: 1rem;
 }
 
 /* Call to action to the projects page */
@@ -1013,19 +1005,51 @@ main {
     color: var(--muted);
 }
 
-.project-problem {
-    margin-top: 0;
+
+.project-highlights {
     margin-bottom: 1.1rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--accent-warm);
 }
 
-.project-note {
-    color: var(--muted);
-    font-size: 0.8rem;
+.project-highlights-title {
+    margin-bottom: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent-text);
+}
+
+.project-highlights ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.project-highlights li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.88rem;
     line-height: 1.55;
-    margin-bottom: 1.2rem;
+    color: var(--muted);
 }
 
-.project-note a {
+.project-highlights li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    font-family: var(--font-mono);
+    color: var(--steel);
+}
+
+.project-highlights li strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.project-desc a {
     text-decoration: underline;
     text-underline-offset: 2px;
 }
@@ -1655,7 +1679,7 @@ button:focus-visible {
         padding: 0 0.35rem;
         margin-left: -0.35rem;
     }
-    .project-note a,
+    .project-desc a,
     .section-intro a {
         padding: 0.85rem 0.4rem;
         margin: -0.85rem -0.4rem;
