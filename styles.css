@@ -1383,6 +1383,18 @@ a.cert-card:hover .cert-link-icon {
     border-color: var(--accent-warm);
 }
 
+/* Profile and résumé links: one row that wraps to fit the card */
+.contact-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.6rem;
+}
+
+.contact-row .contact-item {
+    width: auto;
+    justify-content: center;
+}
+
 .contact-item svg {
     width: 18px;
     height: 18px;
