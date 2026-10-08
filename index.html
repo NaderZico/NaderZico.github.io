@@ -45,17 +45,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261009g">
+    <link rel="stylesheet" href="styles.css?v=20261009h">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
             document.documentElement.classList.add('js');
-            try {
-                var t = localStorage.getItem('theme') || 'dark';
-                document.documentElement.setAttribute('data-theme', t);
-                var m = document.querySelector('meta[name="theme-color"]');
-                if (m) m.setAttribute('content', t === 'light' ? '#f4f6fa' : '#05080f');
-            } catch (e) {}
+            // A saved choice wins; on a first visit follow the visitor's OS setting.
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'light' ? '#f4f6fa' : '#05080f');
         })();
     </script>
 </head>
@@ -179,12 +182,12 @@
                     <div class="feature-media">
                         <figure>
                             <button class="shot" type="button" aria-label="Enlarge screenshot: The booking page: session lengths with free-slot counts and a week of office-hour times to pick from">
-                                <img src="assets/desktop-v2-booking.webp?v=20261009g" width="1200" height="750" loading="lazy" decoding="async" alt="The booking page: session lengths with free-slot counts and a week of office-hour times to pick from">
+                                <img src="assets/desktop-v2-booking.webp?v=20261009f" width="1200" height="750" loading="lazy" decoding="async" alt="The booking page: session lengths with free-slot counts and a week of office-hour times to pick from">
                             </button>
                         </figure>
                         <figure>
                             <button class="shot" type="button" aria-label="Enlarge screenshot: The faculty office-hours page, listing weekly blocks in a campus room or online with edit and remove buttons">
-                                <img src="assets/desktop-v2-office-hours.webp?v=20261009g" width="1200" height="750" loading="lazy" decoding="async" alt="The faculty office-hours page, listing weekly blocks in a campus room or online with edit and remove buttons">
+                                <img src="assets/desktop-v2-office-hours.webp?v=20261009f" width="1200" height="750" loading="lazy" decoding="async" alt="The faculty office-hours page, listing weekly blocks in a campus room or online with edit and remove buttons">
                             </button>
                         </figure>
                     </div>
@@ -481,6 +484,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261009g"></script>
+    <script src="script.js?v=20261009h"></script>
 </body>
 </html>

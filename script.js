@@ -141,6 +141,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // With no saved choice, follow the OS setting if it changes while the page is open
+    if (window.matchMedia) {
+        const osLight = window.matchMedia('(prefers-color-scheme: light)');
+        osLight.addEventListener('change', (e) => {
+            let saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (err) {}
+            if (saved === 'light' || saved === 'dark') return;
+            const next = e.matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', next === 'light' ? '#f4f6fa' : '#05080f');
+        });
+    }
+
     // Screenshot viewer: click a project screenshot to read it at full size
     const lightbox = document.getElementById('lightbox');
     if (lightbox && typeof lightbox.showModal === 'function') {
