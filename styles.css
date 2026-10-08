@@ -1130,6 +1130,12 @@ main {
     letter-spacing: 0.04em;
 }
 
+.skills-practices {
+    margin-top: 1.4rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
 /* "AI" in the hero tagline sits in an orange marker, the same in both themes.
    Negative side margins cancel the padding so the tagline wraps as it would without it. */
 .title .hl {
