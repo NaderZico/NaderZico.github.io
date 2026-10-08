@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#05080f">
     <title>Nader Khalil | Full-Stack Software Engineer</title>
-    <meta name="description" content="Full-stack software engineer in Abu Dhabi building tested web apps (React, Next.js, TypeScript, PHP, PostgreSQL) and AI assistants with RAG and tool calling.">
+    <meta name="description" content="Full-stack software engineer in Abu Dhabi building robust, well-tested web apps (React, Next.js, TypeScript, PHP, PostgreSQL) and AI agents with tool calling.">
     <link rel="canonical" href="https://naderzico.github.io/">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Nader Khalil">
     <meta property="og:title" content="Nader Khalil | Full-Stack Software Engineer">
-    <meta property="og:description" content="Tested full-stack web applications and AI assistants with RAG and tool calling. React, Next.js, TypeScript, PHP, and PostgreSQL.">
+    <meta property="og:description" content="Robust, maintainable full-stack web applications and AI assistants with RAG and tool calling. React, Next.js, TypeScript, PHP, and PostgreSQL.">
     <meta property="og:url" content="https://naderzico.github.io/">
     <meta property="og:image" content="https://naderzico.github.io/assets/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
     <meta property="og:image:alt" content="Nader Khalil, Full-Stack Software Engineer">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nader Khalil | Full-Stack Software Engineer">
-    <meta name="twitter:description" content="Tested full-stack web applications and AI assistants with RAG and tool calling. React, Next.js, TypeScript, PHP, and PostgreSQL.">
+    <meta name="twitter:description" content="Robust, maintainable full-stack web applications and AI assistants with RAG and tool calling. React, Next.js, TypeScript, PHP, and PostgreSQL.">
     <meta name="twitter:image" content="https://naderzico.github.io/assets/og-image.png">
     <script type="application/ld+json">
     {
@@ -37,7 +37,7 @@
             { "@type": "CollegeOrUniversity", "name": "Al Ain University" },
             { "@type": "EducationalOrganization", "name": "42 Abu Dhabi" }
         ],
-        "knowsAbout": ["Full-stack web development", "React", "Next.js", "TypeScript", "PHP", "PostgreSQL", "LLM tool calling", "RAG", "LLM evaluation", "Web security", "Docker", "C and C++"],
+        "knowsAbout": ["Full-stack web development", "React", "Next.js", "TypeScript", "PHP", "PostgreSQL", "LLM tool calling", "RAG", "LLM evaluation", "Web security", "Software architecture", "Automated testing", "CI/CD", "Docker", "C and C++"],
         "sameAs": ["https://github.com/NaderZico", "https://linkedin.com/in/naderkhz/"]
     }
     </script>
@@ -101,7 +101,7 @@
                     B.Sc. in Software Engineering
                 </p>
                 <p class="bio">
-                    I'm a software engineer who builds full-stack web applications and AI agents. I ship with React, Next.js and TypeScript, PHP, and REST APIs on PostgreSQL or MySQL, test them end to end, deploy services in Docker containers, and integrate LLM APIs, tool calling, and structured data to automate real work. A B.Sc. in Software Engineering and low-level systems programming in C keep it grounded, so I reason about what happens under the hood instead of prompting and hoping.
+                    I'm a software engineer who builds robust, maintainable full-stack web applications and AI agents. I ship with React, Next.js and TypeScript, PHP, and REST APIs on PostgreSQL or MySQL, cover them with automated end-to-end tests, deploy reliable services in Docker containers, and integrate LLM APIs, tool calling, and structured data to automate real work. A B.Sc. in Software Engineering and low-level systems programming in C keep it grounded, so I reason about what happens under the hood instead of prompting and hoping.
                 </p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn-primary lg">View Projects</a>
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <p class="project-subtitle">Full-Stack Web + RAG Assistant</p>
-                        <p class="project-desc">Students book faculty office hours from a live calendar, and an AI assistant answers from a knowledge base with citations and prepares bookings and changes that only run after the user confirms. The university theme is sample data; the flow fits any booking use case. Next.js 16, TypeScript, PostgreSQL with pgvector, Prisma, Auth.js, and the Vercel AI SDK, with a nonce-based CSP, rate limiting, Docker, and CI.</p>
+                        <p class="project-desc">Students book faculty office hours from a live calendar, and an AI assistant answers from a knowledge base with citations and prepares bookings and changes that only run after the user confirms. The university theme is sample data; the flow fits any booking use case. Maintainable and strictly typed: Next.js 16, PostgreSQL with pgvector, Prisma, Auth.js, the Vercel AI SDK, Zod validation, a shared service layer, Docker, and CI.</p>
                         <ul class="project-metrics">
                             <li><strong data-count="450" data-suffix="+">450+</strong><span>unit, integration, and e2e tests</span></li>
                             <li><strong data-count="112">112</strong><span>live assistant checks passing</span></li>
@@ -168,8 +168,8 @@
                             <ul>
                             <li><strong>The AI can't act alone.</strong> Suggested bookings and cancellations need your confirmation before they run.</li>
                             <li><strong>Answers cite their sources.</strong> Replies come from a knowledge base and name the documents used.</li>
-                            <li><strong>No double bookings.</strong> Row locks and conditional updates stop simultaneous requests, proven by race tests.</li>
-                            <li><strong>Hardened by default.</strong> Nonce-based CSP, per-user and per-IP rate limits, server-side role checks.</li>
+                            <li><strong>Concurrency-safe bookings.</strong> Row locks and conditional updates stop simultaneous requests, proven by race tests.</li>
+                            <li><strong>Secure by default.</strong> Nonce-based CSP, per-user and per-IP rate limits, server-side role checks.</li>
                             </ul>
                         </div>
                         <div class="project-tags">
@@ -211,7 +211,7 @@
                             </div>
                         </div>
                         <p class="project-subtitle">Full-Stack Web App · Capstone Rewrite</p>
-                        <p class="project-desc">A full rewrite of my <a href="https://github.com/NaderZico/Student-Faculty-Services" target="_blank" rel="noopener noreferrer">senior capstone</a>. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, and a waitlist. React 19 and TypeScript front end, a framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions once the tests pass.</p>
+                        <p class="project-desc">A full rewrite of my <a href="https://github.com/NaderZico/Student-Faculty-Services" target="_blank" rel="noopener noreferrer">senior capstone</a>. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, and a waitlist. React 19 and TypeScript front end, a layered, framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions only when every test passes.</p>
                         <ul class="project-metrics">
                             <li><strong data-count="400" data-suffix="+">400+</strong><span>PHPUnit, Vitest, and Playwright tests</span></li>
                             <li><strong data-count="46">46</strong><span>REST API endpoints, no framework</span></li>
@@ -221,7 +221,7 @@
                             <p class="project-highlights-title">Engineering highlights</p>
                             <ul>
                             <li><strong>Undo that can't lose a slot.</strong> Cancellations can be undone for 10 seconds; the slot is held and undo re-checks every rule.</li>
-                            <li><strong>Reminders that never misfire.</strong> One a day before, in the app or by email, cancelled with the appointment and never sent twice.</li>
+                            <li><strong>Reliable reminders.</strong> One a day before, in the app or by email, cancelled with the appointment and never sent twice.</li>
                             <li><strong>Waitlist alerts, once.</strong> Join a waitlist when nothing is free and get one alert when a time opens, however it opened.</li>
                             <li><strong>Ten booking rules, one transaction.</strong> Notice, overlaps, limits and closures are checked together, all or nothing.</li>
                             </ul>
@@ -323,14 +323,14 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
                     </div>
                     <h3>Backend &amp; APIs</h3>
-                    <p><span class="hl-soft">REST APIs</span>, PHP, Next.js route handlers, C# MinimalAPI, session and Auth.js authentication, request validation (Zod), JSON processing.</p>
+                    <p><span class="hl-soft">REST API design</span>, layered architecture (controllers, services, repositories), robust validation (Zod) and error handling, session and Auth.js authentication, PHP, Next.js route handlers, C# MinimalAPI.</p>
                 </div>
                 <div class="skill-card glass">
                     <div class="skill-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                     </div>
                     <h3>Data &amp; Security</h3>
-                    <p><span class="hl-soft">PostgreSQL</span> with pgvector, MySQL and MariaDB, Prisma, EF Core, SQL. Transactions, row locks, and concurrency-safe writes. CSP with nonces, CSRF protection, rate limiting (Upstash), secure sessions, and role-based access. CTF experience (CyberQ Top 10 finalist).</p>
+                    <p><span class="hl-soft">PostgreSQL</span> with pgvector, MySQL and MariaDB, Prisma, EF Core, SQL. Transactions, row locks, idempotent updates, and concurrency-safe writes. CSP with nonces, CSRF protection, rate limiting (Upstash), secure sessions, and role-based access. CTF experience (CyberQ Top 10 finalist).</p>
                 </div>
                 <div class="skill-card glass">
                     <div class="skill-icon">
@@ -344,7 +344,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                     </div>
                     <h3>Testing &amp; Delivery</h3>
-                    <p><span class="hl-soft">Vitest, Playwright, PHPUnit</span>, axe accessibility checks, concurrency and race tests, black-box and white-box testing. GitHub Actions CI/CD, <span class="hl-soft">Docker and containerization</span>, Sentry error tracking, uptime monitoring, runbooks. Deployed on Render, Neon, and GitHub Pages.</p>
+                    <p><span class="hl-soft">Vitest, Playwright, PHPUnit</span>, axe accessibility checks, concurrency and race tests, black-box and white-box testing. GitHub Actions CI/CD with tests as quality gates, <span class="hl-soft">Docker and containerization</span>, Sentry error tracking, uptime monitoring, runbooks. Deployed on Render, Neon, and GitHub Pages.</p>
                 </div>
                 <div class="skill-card glass">
                     <div class="skill-icon">
@@ -354,7 +354,7 @@
                     <p>Agentic workflows, <span class="hl-soft">LLM API integration</span> (Vercel AI SDK), tool calling with confirmation steps, RAG and embeddings, LLM evals, prompt caching and cost tracking, structured JSON, MCPs, and prompt engineering. Spec-driven development with AI coding agents.</p>
                 </div>
             </div>
-            <p class="sys-learned skills-practices"><strong>Practices:</strong> technical documentation and decision logs, pull-request workflow, mentoring and technical communication, self-directed learning.</p>
+            <p class="sys-learned skills-practices"><strong>Practices:</strong> clean, maintainable code with clear separation of concerns, refactoring, technical documentation and decision logs, pull-request workflow, mentoring and technical communication, self-directed learning.</p>
         </section>
 
         <!-- Education Section -->
@@ -431,7 +431,7 @@
             <h2 class="section-title">About <span class="hl">Me</span></h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>I hold a <strong>B.Sc. in Software Engineering</strong> from Al Ain University and build <strong>full-stack web applications</strong> end to end, from the interface to the database, along with <strong>AI agents</strong> that connect LLM APIs to real tools and data. Mentoring students in <strong>ADEK's AgenticVerse</strong> program taught me to explain these systems clearly.</p>
+                    <p>I hold a <strong>B.Sc. in Software Engineering</strong> from Al Ain University and design, build, and test <strong>full-stack web applications</strong> end to end, from the interface to the database, with a focus on reliability and maintainability, along with <strong>AI agents</strong> that connect LLM APIs to real tools and data. Mentoring students in <strong>ADEK's AgenticVerse</strong> program taught me to explain these systems clearly.</p>
                     <p>Since December 2024 I have been at <strong>42 Abu Dhabi</strong>, a peer-driven program with no lectures, writing C and C++ and learning what higher-level tools abstract away. I read requirements carefully, test edge cases, and go find the answer instead of waiting to be taught.</p>
                 </div>
                 <div class="about-highlights">
