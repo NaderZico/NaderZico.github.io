@@ -173,6 +173,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Full project details: the button next to a project's screenshots opens its dialog
+    document.querySelectorAll('[data-details]').forEach(button => {
+        const dialog = document.getElementById(button.dataset.details);
+        if (!dialog || typeof dialog.showModal !== 'function') return;
+        button.addEventListener('click', () => {
+            dialog.scrollTop = 0;
+            dialog.showModal();
+        });
+        dialog.querySelector('.details-close').addEventListener('click', () => dialog.close());
+        // A click on the backdrop (outside the panel) closes it; Escape works natively
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog) dialog.close();
+        });
+        dialog.addEventListener('close', () => button.focus({ preventScroll: true }));
+    });
+
     // In-page links glide to their section. This is done here, not with CSS alone, because some
     // browsers (Brave among them) turn off CSS smooth scrolling along with their own setting.
     // Reduced motion keeps the browser's instant jump.

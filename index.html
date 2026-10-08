@@ -45,7 +45,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261009l">
+    <link rel="stylesheet" href="styles.css?v=20261009m">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -143,6 +143,7 @@
                                 <img src="assets/desktop-scheduler-dashboard.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The student dashboard: a weekly calendar of open, booked, and past appointment slots with search and college filters">
                             </button>
                         </figure>
+                        <button class="btn-secondary details-btn" type="button" data-details="details-scheduler" aria-haspopup="dialog">Full project details</button>
                     </div>
                     <div class="feature-body project-content">
                         <div class="project-header">
@@ -197,6 +198,7 @@
                                 <img src="assets/desktop-v2-office-hours.webp?v=20261009f" width="1200" height="750" loading="lazy" decoding="async" alt="The faculty office-hours page, listing weekly blocks in a campus room or online with edit and remove buttons">
                             </button>
                         </figure>
+                        <button class="btn-secondary details-btn" type="button" data-details="details-v2" aria-haspopup="dialog">Full project details</button>
                     </div>
                     <div class="feature-body project-content">
                         <div class="project-header">
@@ -493,11 +495,226 @@
         <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
     </footer>
 
+    <dialog id="details-scheduler" class="details-dialog" aria-labelledby="details-scheduler-title">
+        <div class="details-head">
+            <div>
+                <p class="details-kicker">Full project details</p>
+                <h2 id="details-scheduler-title">AI Appointment Scheduler</h2>
+            </div>
+            <button class="details-close" type="button" aria-label="Close project details">&times;</button>
+        </div>
+        <div class="details-body">
+            <p class="details-summary">A booking platform for faculty office hours with an AI assistant that answers from a knowledge base with citations and only acts after the user confirms. University names, people and policies in the demo are fictional.</p>
+            <div class="details-links">
+                <a class="btn-primary" href="https://waha-ai-appointments.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo</a>
+                <a class="btn-secondary" href="https://github.com/NaderZico/ai-appointment-scheduler" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+            </div>
+            <section class="details-section">
+                <h3>Features</h3>
+                <div class="details-grid">
+                <div class="details-group">
+                    <h4>Students</h4>
+                    <ul>
+                        <li>Browse every faculty member's open office hours on a <strong>week, month or list calendar</strong> (week on wide screens, month on phones) with a status legend that filters</li>
+                        <li><strong>Book in one click</strong> from the calendar or the faculty directory, with an optional note and a 10-second undo</li>
+                        <li><strong>Reschedule</strong> within the same faculty member, <strong>cancel</strong> with an optional reason the faculty member sees, and edit notes</li>
+                        <li><strong>Export to a calendar app</strong> (.ics), get a day-before reminder, and see live notifications</li>
+                        <li><strong>Self-register</strong> (optionally restricted to a domain) and page through the full history of past and cancelled appointments</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Faculty</h4>
+                    <ul>
+                        <li>Publish availability as <strong>single slots, back-to-back runs or weekly repeats</strong></li>
+                        <li><strong>Close, reopen or delete</strong> unbooked slots, and move or cancel students' appointments</li>
+                        <li><strong>Undo recent changes</strong> for 15 minutes, backed by an action journal</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Admins</h4>
+                    <ul>
+                        <li>An overview plus searchable, pageable <strong>users, appointments, slots and a cross-user activity log</strong> (filters run in the database)</li>
+                        <li><strong>Create faculty, correct user details, cancel appointments and deactivate accounts</strong>, which cancels their upcoming appointments</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>AI assistant</h4>
+                    <ul>
+                        <li>Answers policy and how-to questions <strong>with citations</strong>; each role retrieves only its own guide</li>
+                        <li>Prepares <strong>bookings, reschedules, cancellations, note changes, weekly slot patterns and undo</strong> as confirmation cards that run only after you confirm</li>
+                        <li>Understands <strong>follow-ups, relative dates and Arabic</strong></li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Everyone</h4>
+                    <ul>
+                        <li><strong>Account settings</strong> for name and password; a password change signs out other devices and keeps the current one</li>
+                        <li><strong>Notifications</strong> with colour-coded kinds, a live badge that shows an unread breakdown on hover, an alert card for important arrivals, and mark-all-read or clear-read</li>
+                        <li><strong>Booking rules in one place:</strong> book at least an hour ahead, change up to an hour before, no changes after the start, and at most 2 upcoming appointments per faculty member; shown in a popover and stated by the assistant</li>
+                        <li><strong>One-click guest sign-in</strong> for student, faculty and admin, with a weekly sample-data reset</li>
+                    </ul>
+                </div>
+                </div>
+            </section>
+            <section class="details-section">
+                <h3>Technical details</h3>
+                <div class="details-grid">
+                <div class="details-group">
+                    <h4>Architecture</h4>
+                    <ul>
+                        <li>Next.js 16 (App Router), React 19, TypeScript in strict mode and Tailwind CSS 4</li>
+                        <li>Route handlers validate every input with Zod and return typed errors</li>
+                        <li><strong>One write path:</strong> every change goes through <code>lib/services</code> (checks, then a transaction that journals the change for undo); business limits live in one <code>lib/rules.ts</code> that feeds enforcement, the rules popover, the assistant's prompt and the tests</li>
+                        <li>All times use the campus time zone (IANA, DST-safe), including what the assistant sees</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Data and concurrency</h4>
+                    <ul>
+                        <li>PostgreSQL 16 with pgvector through Prisma 7; a unique key on (faculty, start time) prevents overlapping slots, and cancelled appointments stay as history</li>
+                        <li>A slot is claimed with a <strong>conditional update</strong> inside a transaction; the student's row is locked so overlap and limit checks cannot race, and an advisory lock protects the last-admin rule</li>
+                        <li>Race tests run against a real Postgres</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>AI assistant</h4>
+                    <ul>
+                        <li><strong>Retrieval:</strong> the knowledge base is chunked (about 600 tokens, about 12% overlap), embedded as 384-dimension vectors, and the nearest 8 chunks by cosine similarity are fetched from pgvector, filtered by role in SQL</li>
+                        <li><strong>Generation:</strong> DeepSeek through the Vercel AI SDK with 15 role-scoped tools (read and write) and streamed answers with citations</li>
+                        <li><strong>Safety:</strong> tools only return proposals, a confirmation calls the same REST API a click would, client-sent tool output is discarded, and chat history stays in the browser</li>
+                        <li>The prompt layout keeps about 93% of input tokens cached, and replies start in about 2.5 seconds</li>
+                        <li><strong>Evaluation:</strong> a retrieval eval of about 20 golden questions and a live suite of about 115 checks (injection, data leaks, scope, ambiguity, Arabic, multi-turn) that gates prompt changes</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Security</h4>
+                    <ul>
+                        <li>Roles and account deactivation are re-checked from the database on every request</li>
+                        <li>Nonce-based CSP and HSTS, JSON-only request bodies, and bcrypt password hashing</li>
+                        <li>Rate limits (Upstash) on sign-in, password changes and the assistant</li>
+                        <li>Names reject hidden characters, and calendar exports keep user text inside its field (a bug found in an edge-case review and fixed under test)</li>
+                        <li>Sentry error tracking with personal-data collection off; Dependabot, CodeQL and a CI dependency audit</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Testing and delivery</h4>
+                    <ul>
+                        <li>270 unit, 184 integration (against Postgres) and 67 end-to-end tests, including axe accessibility scans in both themes and phone-width layout checks</li>
+                        <li>CI on every push: dependency audit, lint, typecheck, unit, integration, end-to-end and a production build, with CodeQL alongside</li>
+                        <li>Multi-stage Docker image on Render with Neon (Postgres and pgvector), expand-then-contract migrations through a migrate workflow, a monitored health check, a weekly sample-data reset, and Neon restore points</li>
+                    </ul>
+                </div>
+                </div>
+            </section>
+        </div>
+    </dialog>
+
+    <dialog id="details-v2" class="details-dialog" aria-labelledby="details-v2-title">
+        <div class="details-head">
+            <div>
+                <p class="details-kicker">Full project details</p>
+                <h2 id="details-v2-title">Student-Faculty Services v2</h2>
+            </div>
+            <button class="details-close" type="button" aria-label="Close project details">&times;</button>
+        </div>
+        <div class="details-body">
+            <p class="details-summary">A full rewrite of my senior capstone: students book time in faculty office hours, and faculty manage their hours, closures and booking rules. An unofficial student project; faculty names, ranks and colleges come from AAU's public staff pages, and everything else in the demo is sample data.</p>
+            <div class="details-links">
+                <a class="btn-primary" href="https://student-faculty-services-v2.infinityfree.io" target="_blank" rel="noopener noreferrer">Live demo</a>
+                <a class="btn-secondary" href="https://github.com/NaderZico/student-faculty-services-v2" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+            </div>
+            <section class="details-section">
+                <h3>Features</h3>
+                <div class="details-grid">
+                <div class="details-group">
+                    <h4>Students</h4>
+                    <ul>
+                        <li><strong>Faculty directory:</strong> search by name or college, with each person's next free time</li>
+                        <li><strong>Faculty profiles:</strong> details, weekly office hours with their rooms or online meetings, and rating averages once there are three ratings</li>
+                        <li><strong>Booking grid</strong> for the next 7 days: pick a session length (5, 15, 30 or 45 minutes) with free-slot counts per length; times inside a faculty member's minimum notice show as "Too soon"</li>
+                        <li>Limits: at most 5 upcoming appointments, one per faculty member per day, and no overlaps</li>
+                        <li><strong>Cancel with a 10-second undo</strong></li>
+                        <li><strong>Waitlist</strong> when nothing is free (up to 5 at once): one alert when a time opens, in the app and by email if enabled</li>
+                        <li><strong>Ratings</strong> after an attended appointment: three 1-5 criteria within 14 days, anonymous to faculty</li>
+                        <li><strong>Reminders</strong> the day before each appointment and before the rating window closes, plus optional email with a verified address</li>
+                        <li><strong>Profile</strong> with name, major and photo; <strong>sign-up</strong> with an AAU-format student ID and a "Suggest an ID" helper</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Faculty</h4>
+                    <ul>
+                        <li><strong>Dashboard</strong> with today's appointments and <strong>Close now</strong> for emergencies</li>
+                        <li><strong>Weekly office-hours blocks</strong> (1.5 hours, up to two a day), each in a campus room or online; editing or removing one previews which bookings it would cancel</li>
+                        <li><strong>Closures:</strong> close a range of time with a preview of who is affected; a 10-second undo restores their bookings, and students are told once it is final</li>
+                        <li><strong>Booking rules:</strong> minimum notice, session lengths offered, and a gap around each appointment; they apply to new bookings only</li>
+                        <li><strong>Approvals:</strong> mark finished appointments attended or not, with an optional report, which opens rating for the student</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Everyone</h4>
+                    <ul>
+                        <li><strong>Notification bell</strong> (checked every minute while the tab is visible): bookings, cancellations, closures, reminders, approvals, rating requests and "a time is free"; shows the newest 30 with Show older and Clear read</li>
+                        <li><strong>Light and dark themes</strong>, phone layouts, and short tips on every page</li>
+                        <li><strong>Demo:</strong> one-click student and faculty accounts, or sign in as any of the 155 faculty and 200 sample students; the demo resets itself weekly</li>
+                    </ul>
+                </div>
+                </div>
+            </section>
+            <section class="details-section">
+                <h3>Technical details</h3>
+                <div class="details-grid">
+                <div class="details-group">
+                    <h4>Architecture</h4>
+                    <ul>
+                        <li>React 19, TypeScript, Vite, React Router and TanStack Query on the front end</li>
+                        <li>A <strong>layered, framework-free PHP 8.4 API:</strong> router, controllers, services and repositories over PDO, with 46 REST endpoints (28 of them write endpoints)</li>
+                        <li>MariaDB 11.4 with 13 tables (11 foreign keys, 11 CHECK constraints and 4 unique keys)</li>
+                        <li>All times use Asia/Dubai through one clock that tests can freeze</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Booking correctness</h4>
+                    <ul>
+                        <li>One transaction locks the student row, then the faculty row (always in that order, so bookings cannot deadlock) and checks <strong>ten rules</strong></li>
+                        <li>Tested three ways: a test holding a shared lock from a second connection, eight students racing for one slot over real HTTP (exactly one wins), and every rule checked in SQL at four times of the week; the race test fails without the lock</li>
+                        <li><strong>Undo:</strong> a cancelled time is held for 15 seconds (the interface offers 10), the other side's notification is dated at the end of the window, and undo re-checks every rule under the same locks; an undo racing seven bookings always wins</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Reminders, email and upkeep</h4>
+                    <ul>
+                        <li>Reminders are claimed with a conditional update, so each is created once; optional emails go through an outbox, are scheduled ahead, and one whose reason is gone is never sent</li>
+                        <li>Email addresses are verified with a click that needs a real button press, so mail scanners cannot confirm them</li>
+                        <li>New database migrations, the weekly demo reset and reminders run automatically on the first request that needs them, under database locks; a test proves the original schema plus every migration equals the current schema</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Security</h4>
+                    <ul>
+                        <li>Prepared statements (real server-side prepares) for every query that takes user input; ownership is checked in the SQL itself</li>
+                        <li>A CSRF token is required on all 28 write endpoints; login throttling by email and IP; strict sessions with a new ID on login and logout</li>
+                        <li>Uploaded photos are re-encoded to WebP, which drops metadata and hidden payloads; security headers are set on responses</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Testing and delivery</h4>
+                    <ul>
+                        <li>273 PHPUnit tests (unit, feature tests through the real router, and real-HTTP tests through Apache), 134 Vitest tests, and 14 Playwright tests that each run on desktop and phone with axe accessibility checks in light and dark mode</li>
+                        <li>Key tests were verified by breaking the code they protect and confirming they fail; Lighthouse scores 100 for accessibility and best practices on the login page</li>
+                        <li>GitHub Actions runs the web and API checks, integration tests and a production-layout check, and deploys only when everything passes; local development and CI use the same MariaDB version as production</li>
+                        <li>A README with architecture and data-model diagrams, a handoff guide for new developers, and a deploy guide with the migration procedure</li>
+                    </ul>
+                </div>
+                </div>
+            </section>
+        </div>
+    </dialog>
+
     <dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
         <button class="lightbox-close" type="button" aria-label="Close screenshot">&times;</button>
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261009l"></script>
+    <script src="script.js?v=20261009m"></script>
 </body>
 </html>
