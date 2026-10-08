@@ -160,7 +160,7 @@
                             <li><strong data-count="112">112</strong><span>live assistant checks passing</span></li>
                             <li><strong data-count="93" data-suffix="%">93%</strong><span>of input tokens served from cache</span></li>
                         </ul>
-                        <p class="project-problem sys-learned"><strong>The problem:</strong> the assistant never changes data on its own. Each tool call returns a confirmation card, and only after the user confirms does it run through the same services and rules as the REST API.</p>
+                        <p class="project-problem sys-learned"><strong>Engineering highlight:</strong> the AI can't change anything on its own. Every booking or cancellation it suggests appears as a confirmation card, and only runs after you confirm, using the same rules as the rest of the app.</p>
                         <p class="project-note">One-click guest accounts. The free host may take about 30 seconds to wake.</p>
                         <div class="project-tags">
                             <span>Next.js</span>
@@ -207,7 +207,7 @@
                             <li><strong data-count="46">46</strong><span>REST API endpoints, no framework</span></li>
                             <li><strong>$0</strong><span>hosting cost, deployed by CI</span></li>
                         </ul>
-                        <p class="project-problem sys-learned"><strong>The problem:</strong> two students must never book the same slot. Booking runs in one transaction with row locks, and a concurrent-booking test proves it: remove the lock and double bookings appear.</p>
+                        <p class="project-problem sys-learned"><strong>Engineering highlight:</strong> two students can't book the same slot. Booking runs as one database transaction with row locks, and a test that sends simultaneous requests proves it: remove the lock and double bookings appear.</p>
                         <p class="project-note">Use "Try as student" or "Try as faculty" on the login page. Unofficial student project with fictional accounts. The original 2024 capstone: <a href="https://github.com/NaderZico/Student-Faculty-Services" target="_blank" rel="noopener noreferrer">source</a> · <a href="https://student-faculty-services.42web.io" target="_blank" rel="noopener noreferrer">live</a>.</p>
                         <div class="project-tags">
                             <span>React</span>
