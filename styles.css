@@ -409,54 +409,24 @@ main {
     gap: 1rem 1.25rem;
 }
 
-.hero-credential {
+.hero-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 0.65rem 1.1rem 0.65rem 0.75rem;
-    margin-bottom: 1.6rem;
-    background: var(--surface);
-    border: 1px solid var(--border-strong);
-    border-left: 3px solid var(--accent-warm);
-    border-radius: var(--radius);
-    text-align: left;
-}
-
-.hero-credential-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius);
-    background: var(--icon-bg);
-    color: var(--icon-fg);
-}
-
-.hero-credential-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.hero-credential-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-    line-height: 1.35;
-}
-
-.hero-credential-text strong {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text);
-}
-
-.hero-credential-text span {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.3rem 0.8rem;
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.hero-tag svg {
+    width: 15px;
+    height: 15px;
+    color: var(--steel);
+    flex-shrink: 0;
 }
 
 .social-links {
@@ -1319,6 +1289,39 @@ a.cert-card:hover .cert-link-icon {
 .contact-box p {
     color: var(--muted);
     margin-bottom: 1.6rem;
+}
+
+.availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.2rem 0 1.4rem;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.88rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+}
+
+.availability-dot {
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22);
+}
+
+@media (max-width: 480px) {
+    .availability {
+        border-radius: 14px;
+    }
+}
+
+[data-theme="light"] .availability-dot {
+    background: #16a34a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
 }
 
 .contact-links {
