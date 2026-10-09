@@ -249,6 +249,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Once the page has settled, fetch and decode the lazy screenshots in idle time, so the first
+    // scroll toward them doesn't pay for the download and decode in the middle of an animation
+    window.addEventListener('load', () => {
+        const warm = () => document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.loading = 'eager';
+            if (img.decode) img.decode().catch(() => {});
+        });
+        if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 2000 });
+        else setTimeout(warm, 500);
+    });
+
     // Anchor links scroll smoothly through CSS (scroll-behavior), which also
     // keeps the URL hash and keyboard focus working and respects reduced motion.
 });
