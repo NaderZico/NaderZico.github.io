@@ -809,9 +809,8 @@ main {
 .feature-card {
     display: grid;
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
+    gap: 2rem;
+    padding: 1.4rem;
     transition: var(--transition-smooth);
 }
 
@@ -819,32 +818,45 @@ main {
     border-color: var(--border-strong);
 }
 
-/* Two landscape screenshots stacked edge to edge: they touch the card's left, top and bottom borders */
+/* Two landscape screenshots stacked in a tinted panel, each in a plain window frame */
 .feature-media {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid var(--border);
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1rem;
+    background: var(--band-a);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
 }
 
 .feature-media figure {
-    flex: 1 0 auto;
     min-width: 0;
-    aspect-ratio: 16 / 10;
-    position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
     background: var(--bg);
+    box-shadow: 0 6px 18px var(--band-shadow);
 }
 
-.feature-media figure + figure {
-    border-top: 1px solid var(--border);
+/* Window bar: three neutral dots, no browser branding */
+.feature-media figure::before {
+    content: "";
+    display: block;
+    height: 22px;
+    border-bottom: 1px solid var(--border);
+    background:
+        radial-gradient(circle at 12px 50%, var(--border-strong) 3px, transparent 3.5px),
+        radial-gradient(circle at 26px 50%, var(--border-strong) 3px, transparent 3.5px),
+        radial-gradient(circle at 40px 50%, var(--border-strong) 3px, transparent 3.5px),
+        var(--surface);
 }
 
 .shot {
-    position: absolute;
-    inset: 0;
+    position: relative;
     display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 10;
     padding: 0;
     border: 0;
     background: none;
@@ -872,7 +884,6 @@ main {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    padding: 1.4rem;
 }
 
 .feature-body .project-header h3 {
@@ -1790,10 +1801,7 @@ button:focus-visible {
     }
     .feature-card {
         grid-template-columns: minmax(0, 1fr);
-    }
-    .feature-media {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
+        gap: 1.4rem;
     }
     .projects-more {
         flex-direction: column;
@@ -1843,8 +1851,11 @@ button:focus-visible {
     .project-metrics {
         grid-template-columns: 1fr;
     }
-    .feature-body {
+    .feature-card {
         padding: 1.2rem;
+    }
+    .feature-media {
+        padding: 0.7rem;
     }
     .sys-grid {
         grid-template-columns: 1fr;
