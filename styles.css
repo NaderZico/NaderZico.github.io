@@ -757,41 +757,9 @@ main {
     border-color: var(--text);
 }
 
+/* Live-demo link: same icon as its neighbours, only the border hints at it */
 .demo-link {
-    position: relative;
-    color: var(--accent-text);
-    border-color: var(--accent-warm);
-    background: color-mix(in srgb, var(--accent-warm) 12%, transparent);
-}
-
-.demo-link:hover {
-    color: var(--accent-text);
-    border-color: var(--accent-warm);
-    background: color-mix(in srgb, var(--accent-warm) 22%, transparent);
-}
-
-/* A soft ring leaves the icon every few seconds (transform and opacity only, so it stays smooth) */
-.demo-link::after {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border: 2px solid var(--accent-warm);
-    border-radius: inherit;
-    opacity: 0;
-    pointer-events: none;
-    animation: demo-ring 3.6s ease-out infinite;
-}
-
-.demo-link:hover::after,
-.demo-link:focus-visible::after {
-    animation-play-state: paused;
-    opacity: 0;
-}
-
-@keyframes demo-ring {
-    0% { transform: scale(1); opacity: 0.55; }
-    35% { transform: scale(1.5); opacity: 0; }
-    100% { transform: scale(1.5); opacity: 0; }
+    border-color: color-mix(in srgb, var(--accent-warm) 55%, var(--border));
 }
 
 .project-link svg {
@@ -1805,8 +1773,7 @@ button:focus-visible {
         transition: none;
     }
     .lightbox[open],
-    .lightbox[open]::backdrop,
-    .demo-link::after {
+    .lightbox[open]::backdrop {
         animation: none;
     }
     .project-card:hover,
