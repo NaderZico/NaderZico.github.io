@@ -49,10 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.classList.add('in');
                 cardObserver.unobserve(el);
                 // Hand the card back to its normal hover styles once it has landed
-                setTimeout(() => {
+                const release = () => {
                     el.classList.remove('reveal-item', 'in');
                     el.style.removeProperty('--delay');
-                }, 1200 + i * 80);
+                };
+                el.addEventListener('transitionend', function done(e) {
+                    if (e.target !== el || e.propertyName !== 'transform') return;
+                    el.removeEventListener('transitionend', done);
+                    release();
+                });
+                setTimeout(release, 1500 + i * 80);
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
         cards.forEach(el => cardObserver.observe(el));
