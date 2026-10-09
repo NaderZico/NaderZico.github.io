@@ -809,8 +809,9 @@ main {
 .feature-card {
     display: grid;
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-    gap: 2rem;
-    padding: 1.4rem;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
     transition: var(--transition-smooth);
 }
 
@@ -818,21 +819,24 @@ main {
     border-color: var(--border-strong);
 }
 
-/* Two landscape screenshots stacked in one column */
+/* Two landscape screenshots stacked edge to edge: they touch the card's left, top and bottom borders */
 .feature-media {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    border-right: 1px solid var(--border);
 }
 
 .feature-media figure {
+    flex: 1 0 auto;
     min-width: 0;
     aspect-ratio: 16 / 10;
     position: relative;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
     overflow: hidden;
     background: var(--bg);
+}
+
+.feature-media figure + figure {
+    border-top: 1px solid var(--border);
 }
 
 .shot {
@@ -845,6 +849,10 @@ main {
     border: 0;
     background: none;
     cursor: zoom-in;
+}
+
+.shot:focus-visible {
+    outline-offset: -3px;
 }
 
 .shot img {
@@ -864,6 +872,7 @@ main {
     display: flex;
     flex-direction: column;
     min-width: 0;
+    padding: 1.4rem;
 }
 
 .feature-body .project-header h3 {
@@ -1781,7 +1790,10 @@ button:focus-visible {
     }
     .feature-card {
         grid-template-columns: minmax(0, 1fr);
-        gap: 1.4rem;
+    }
+    .feature-media {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
     }
     .projects-more {
         flex-direction: column;
@@ -1831,7 +1843,7 @@ button:focus-visible {
     .project-metrics {
         grid-template-columns: 1fr;
     }
-    .feature-card {
+    .feature-body {
         padding: 1.2rem;
     }
     .sys-grid {
