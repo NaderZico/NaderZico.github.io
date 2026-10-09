@@ -757,6 +757,43 @@ main {
     border-color: var(--text);
 }
 
+.demo-link {
+    position: relative;
+    color: var(--accent-text);
+    border-color: var(--accent-warm);
+    background: color-mix(in srgb, var(--accent-warm) 12%, transparent);
+}
+
+.demo-link:hover {
+    color: var(--accent-text);
+    border-color: var(--accent-warm);
+    background: color-mix(in srgb, var(--accent-warm) 22%, transparent);
+}
+
+/* A soft ring leaves the icon every few seconds (transform and opacity only, so it stays smooth) */
+.demo-link::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 2px solid var(--accent-warm);
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    animation: demo-ring 3.6s ease-out infinite;
+}
+
+.demo-link:hover::after,
+.demo-link:focus-visible::after {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+@keyframes demo-ring {
+    0% { transform: scale(1); opacity: 0.55; }
+    35% { transform: scale(1.5); opacity: 0; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
 .project-link svg {
     width: 16px;
     height: 16px;
@@ -1768,7 +1805,8 @@ button:focus-visible {
         transition: none;
     }
     .lightbox[open],
-    .lightbox[open]::backdrop {
+    .lightbox[open]::backdrop,
+    .demo-link::after {
         animation: none;
     }
     .project-card:hover,
