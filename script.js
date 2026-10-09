@@ -132,7 +132,16 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.addEventListener('click', () => {
             const root = document.documentElement;
             const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            root.setAttribute('data-theme', next);
+            const apply = () => root.setAttribute('data-theme', next);
+            if (document.startViewTransition) {
+                // One short crossfade of the whole page instead of every element animating separately
+                root.classList.add('theme-switching');
+                const done = () => root.classList.remove('theme-switching');
+                const transition = document.startViewTransition(apply);
+                transition.finished.then(done, done);
+            } else {
+                apply();
+            }
             try {
                 localStorage.setItem('theme', next);
             } catch (e) {}

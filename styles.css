@@ -1779,6 +1779,21 @@ button:focus-visible {
     }
 }
 
+/* Theme switch: script.js wraps the change in a view transition, so the whole page crossfades
+   once. Per-element colour transitions are paused meanwhile; stacked on the crossfade (and on
+   each other through inheritance) they made headings flash back mid-switch. */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+    transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.22s;
+    animation-timing-function: ease;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .hero {
