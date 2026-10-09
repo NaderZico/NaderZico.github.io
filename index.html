@@ -45,7 +45,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261009x">
+    <link rel="stylesheet" href="styles.css?v=20261009y">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -225,7 +225,7 @@
                             <li><strong>Ten booking rules, one transaction.</strong> Notice, overlaps, limits and closures are checked together, all or nothing.</li>
                             <li><strong>Undo actions.</strong> Cancellations and closures can be undone for 10 seconds; the slot stays held and undo re-checks every rule.</li>
                             <li><strong>Reliable reminders.</strong> One a day before, in the app or by email, cancelled with the appointment and never sent twice.</li>
-                            <li><strong>Tests that were tested.</strong> Key tests were checked by breaking the code they protect and confirming they fail.</li>
+                            <li><strong>Race-tested bookings.</strong> Eight students book one slot at once and exactly one wins; the test fails without the lock.</li>
                             </ul>
                         </div>
                         <div class="project-tags">
@@ -712,7 +712,7 @@
                     <h4>Testing and delivery</h4>
                     <ul>
                         <li>273 PHPUnit tests (unit, feature tests through the real router, and real-HTTP tests through Apache), 134 Vitest tests, and 14 Playwright tests that each run on desktop and phone with axe accessibility checks in light and dark mode</li>
-                        <li>Key tests were verified by breaking the code they protect and confirming they fail; Lighthouse scores 100 for accessibility and best practices on the login page</li>
+                        <li>The booking race test was proven by removing the lock: without it, it produced double bookings; Lighthouse scores 100 for accessibility and best practices on the login page</li>
                         <li>GitHub Actions runs the web and API checks, integration tests and a production-layout check, and deploys only when everything passes; local development and CI use the same MariaDB version as production</li>
                         <li>A README with architecture and data-model diagrams, a handoff guide for new developers, and a deploy guide with the migration procedure</li>
                     </ul>
@@ -727,6 +727,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261009x"></script>
+    <script src="script.js?v=20261009y"></script>
 </body>
 </html>
