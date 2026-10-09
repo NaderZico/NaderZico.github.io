@@ -576,6 +576,7 @@ main {
 
 .about-text strong {
     color: var(--text);
+    font-weight: 600;
 }
 
 .about-highlights {
