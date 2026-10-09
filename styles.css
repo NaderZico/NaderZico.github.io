@@ -720,6 +720,7 @@ main {
 
 .project-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
@@ -733,6 +734,7 @@ main {
 .project-links {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     gap: 0.5rem;
 }
 
@@ -1276,6 +1278,25 @@ main {
     gap: 0.8rem;
 }
 
+.edu-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-text);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-smooth);
+}
+
+.edu-link::after {
+    content: " \2197";
+}
+
+.edu-link:hover {
+    border-bottom-color: currentColor;
+}
+
 .cert-card {
     display: flex;
     align-items: center;
@@ -1369,8 +1390,26 @@ a.cert-card:hover .cert-link-icon {
 
 /* Full project details (one dialog per featured project) */
 .details-btn {
-    align-self: flex-start;
+    height: 34px;
+    padding: 0 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
     cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.details-btn:hover {
+    background: var(--accent-warm);
+    border-color: var(--accent-warm);
+    color: var(--bg);
 }
 
 .details-dialog {
@@ -1832,6 +1871,9 @@ button:focus-visible {
 
 /* Touch screens: comfortable tap targets (44px) */
 @media (pointer: coarse) {
+    .details-btn {
+        height: 44px;
+    }
     .project-link,
     .social-links a {
         width: 44px;
