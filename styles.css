@@ -1751,10 +1751,13 @@ button:focus-visible {
     html {
         scroll-behavior: auto;
     }
+    /* Movement is off, but plain colour changes (hover, focus, theme) still ease in:
+       they are not motion, and Windows reports "reduce" whenever its Animation effects
+       setting is off, which hides every hover transition for people who never chose that */
     *,
     *::before,
     *::after {
-        transition-duration: 0.01ms !important;
+        transition-property: color, background-color, border-color, outline-color, box-shadow, filter !important;
     }
     .js .fade-in {
         opacity: 1;
