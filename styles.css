@@ -1039,6 +1039,10 @@ main {
     margin-bottom: 1.4rem;
 }
 
+.project-metrics--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .project-metrics li {
     border: 1px solid var(--border);
     border-radius: var(--radius);
