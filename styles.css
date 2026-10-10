@@ -853,6 +853,10 @@ main {
     border-color: var(--border-strong);
 }
 
+.feature-card--solo {
+    grid-template-columns: minmax(0, 1fr);
+}
+
 /* Two landscape screenshots stacked in a tinted panel, each in a plain window frame */
 .feature-media {
     display: flex;
