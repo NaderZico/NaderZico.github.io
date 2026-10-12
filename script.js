@@ -139,20 +139,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const root = document.documentElement;
             const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
             const apply = () => root.setAttribute('data-theme', next);
-            if (document.startViewTransition) {
+            const setMeta = () => {
+                const meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', next === 'light' ? '#f4f6fa' : '#05080f');
+            };
+            // The crossfade snapshots the page. On touch devices the mobile URL bar can
+            // resize mid-transition, which briefly scales that snapshot (the hero portrait
+            // visibly squashes), so those devices switch instantly instead.
+            const isTouch = window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+            if (document.startViewTransition && !isTouch) {
                 // One short crossfade of the whole page instead of every element animating separately
                 root.classList.add('theme-switching');
                 const done = () => root.classList.remove('theme-switching');
                 const transition = document.startViewTransition(apply);
-                transition.finished.then(done, done);
+                // Recolour the browser chrome only after the crossfade, so the UI update
+                // cannot resize the viewport while the snapshot is still on screen.
+                transition.finished.then(() => { done(); setMeta(); }, () => { done(); setMeta(); });
             } else {
                 apply();
+                setMeta();
             }
             try {
                 localStorage.setItem('theme', next);
             } catch (e) {}
-            const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', next === 'light' ? '#f4f6fa' : '#05080f');
         });
     }
 
