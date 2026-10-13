@@ -178,10 +178,6 @@ a:hover {
     color: var(--accent-warm);
 }
 
-.hl-soft {
-    color: var(--steel-bright);
-}
-
 ul {
     list-style: none;
 }
@@ -617,54 +613,36 @@ main {
     color: var(--muted);
 }
 
-/* Skills */
-.skills-grid {
+/* Skills: a plain definition list, label column + items, filled column by column */
+.skills-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: 3rem;
+    border-top: 1px solid var(--border);
+}
+
+.skills-row {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
     gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
 }
 
-.skill-card {
-    padding: 1.4rem;
-    transition: var(--transition-smooth);
-}
-
-.skill-card:hover {
-    border-color: var(--border-strong);
-    transform: translateY(-2px);
-}
-
-.skill-icon {
-    width: 42px;
-    height: 42px;
-    background: var(--icon-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    color: var(--icon-fg);
-}
-
-.skill-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.skill-card h3 {
+.skills-row dt {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text);
-    margin-bottom: 0.7rem;
+    color: var(--muted);
+    padding-top: 0.2rem;
 }
 
-.skill-card p {
-    color: var(--muted);
-    font-size: 0.88rem;
+.skills-row dd {
+    color: var(--text);
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
@@ -1643,6 +1621,11 @@ html:has(dialog[open]) {
 }
 
 @media (max-width: 480px) {
+    /* .skills-list raises specificity over the 768px rule, which sits later in the file */
+    .skills-list .skills-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.35rem;
+    }
     .availability {
         border-radius: 14px;
     }
@@ -1817,8 +1800,7 @@ button:focus-visible {
         animation: none;
     }
     .project-card:hover,
-    .sys-card:hover,
-    .skill-card:hover {
+    .sys-card:hover {
         transform: none;
     }
 }
@@ -1849,9 +1831,12 @@ html.theme-switching *::after {
     .hero-cta {
         justify-content: center;
     }
+    /* The block stays centred under the name, but a long paragraph reads
+       better ragged-right than centred */
     .bio {
         margin-left: auto;
         margin-right: auto;
+        text-align: left;
     }
     .about-grid {
         grid-template-columns: 1fr;
@@ -1872,6 +1857,14 @@ html.theme-switching *::after {
 }
 
 @media (max-width: 768px) {
+    .skills-list {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+        grid-auto-flow: row;
+    }
+    .skills-row {
+        grid-template-columns: 120px minmax(0, 1fr);
+    }
     .nav-toggle {
         display: flex;
     }
