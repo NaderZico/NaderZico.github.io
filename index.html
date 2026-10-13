@@ -45,7 +45,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261013c">
+    <link rel="stylesheet" href="styles.css?v=20261013e">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -209,7 +209,7 @@
                         <p class="project-subtitle">Full-Stack Web App · Capstone Rewrite</p>
                         <p class="project-desc">A full rewrite of my senior capstone. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, and a waitlist. React 19 and TypeScript front end, a layered, framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions only when every test passes.</p>
                         <ul class="project-metrics">
-                            <li><strong data-count="400" data-suffix="+">400+</strong><span>PHPUnit, Vitest, and Playwright tests</span></li>
+                            <li><strong data-count="500" data-suffix="+">500+</strong><span>PHPUnit, Vitest, and Playwright tests</span></li>
                             <li><strong data-count="46">46</strong><span>REST API endpoints, no framework</span></li>
                             <li><strong>100/100</strong><span>Lighthouse accessibility and best-practices scores</span></li>
                         </ul>
@@ -246,11 +246,11 @@
                             </div>
                         </div>
                         <p class="project-subtitle">Chrome Extension (Published)</p>
-                        <p class="project-desc">A published, lightweight Chrome extension with 47+ users that adds live logtime calculations to the 42 Intra interface: total monthly hours in the header, and totals for any date range you drag across the calendar. It runs entirely client-side and supports both the legacy and V3 Intra layouts.</p>
+                        <p class="project-desc">A published, lightweight Chrome extension with 60+ users that adds live logtime calculations to the 42 Intra interface: total monthly hours in the header, and totals for any date range you drag across the calendar. It runs entirely client-side and supports both the legacy and V3 Intra layouts.</p>
                         <ul class="project-metrics project-metrics--4">
-                            <li><strong data-count="47" data-suffix="+">47+</strong><span>installed users</span></li>
+                            <li><strong data-count="60" data-suffix="+">60+</strong><span>installed users</span></li>
                             <li><strong>0</strong><span>data collected</span></li>
-                            <li><strong>18 KB</strong><span>extension size</span></li>
+                            <li><strong>19 KB</strong><span>extension size</span></li>
                             <li><strong>2</strong><span>Intra layouts</span></li>
                         </ul>
                         <div class="project-tags">
@@ -580,7 +580,7 @@
                         <li><strong>Retrieval:</strong> the knowledge base is chunked (about 600 tokens, about 12% overlap), embedded as 384-dimension vectors, and the nearest 8 chunks by cosine similarity are fetched from pgvector, filtered by role in SQL</li>
                         <li><strong>Generation:</strong> DeepSeek through the Vercel AI SDK with 15 role-scoped tools (read and write) and streamed answers with citations</li>
                         <li><strong>Safety:</strong> tools only return proposals, a confirmation calls the same REST API a click would, client-sent tool output is discarded, and chat history stays in the browser</li>
-                        <li>The prompt layout keeps about 93% of input tokens cached, and replies start in about 2.5 seconds</li>
+                        <li>The prompt layout keeps about 93% of input tokens cached, and replies start in under 3 seconds</li>
                         <li><strong>Evaluation:</strong> a retrieval eval of about 20 golden questions and a live suite of about 115 checks (injection, data leaks, scope, ambiguity, Arabic, multi-turn) that gates prompt changes</li>
                     </ul>
                 </div>
@@ -696,7 +696,7 @@
                 <div class="details-group">
                     <h4>Testing and delivery</h4>
                     <ul>
-                        <li>273 PHPUnit tests (unit, feature tests through the real router, and real-HTTP tests through Apache), 134 Vitest tests, and 14 Playwright tests that each run on desktop and phone with axe accessibility checks in light and dark mode</li>
+                        <li>334 PHPUnit tests (unit tests and feature tests through the real router), plus real-HTTP tests through Apache, 139 Vitest tests, and 20 Playwright tests that run on desktop and phone with axe accessibility checks in light and dark mode</li>
                         <li>The booking race test was proven by removing the lock: without it, it produced double bookings; Lighthouse scores 100 for accessibility and best practices on the login page</li>
                         <li>GitHub Actions runs the web and API checks, integration tests and a production-layout check, and deploys only when everything passes; local development and CI use the same MariaDB version as production</li>
                         <li>A README with architecture and data-model diagrams, a handoff guide for new developers, and a deploy guide with the migration procedure</li>
@@ -712,6 +712,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261013c"></script>
+    <script src="script.js?v=20261013e"></script>
 </body>
 </html>
