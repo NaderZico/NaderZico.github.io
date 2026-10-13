@@ -572,11 +572,6 @@ main {
     margin-bottom: 1.1rem;
 }
 
-.about-text strong {
-    color: var(--text);
-    font-weight: 600;
-}
-
 .about-highlights {
     display: grid;
     grid-template-columns: 1fr 1fr;
