@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#05080f">
     <title>Nader Khalil | Full-Stack Software Engineer</title>
-    <meta name="description" content="Full-stack software engineer in Abu Dhabi building robust, well-tested web apps (React, Next.js, TypeScript, PHP, PostgreSQL) and AI agents with tool calling.">
+    <meta name="description" content="Full-stack software engineer in Abu Dhabi building robust, well-tested web apps (React, Next.js, TypeScript, PHP, PostgreSQL) and AI assistants with tool calling.">
     <link rel="canonical" href="https://naderzico.github.io/">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -45,7 +45,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261013e">
+    <link rel="stylesheet" href="styles.css?v=20261013v">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -101,7 +101,7 @@
                     B.Sc. in Software Engineering
                 </p>
                 <p class="bio">
-                    I like building software that&#39;s easy to use and hard to break. I build web apps and AI assistants that people can rely on, and as a software engineering graduate trained at 42 Abu Dhabi, I pick up new tools quickly and work well both individually and in a team.
+                    I like building software that&#39;s easy to use and hard to break. I build web apps and AI assistants that people can rely on, and as a software engineering graduate now training at 42 Abu Dhabi, I pick up new tools quickly and work well both individually and in a team.
                 </p>
                 <div class="hero-cta">
                     <a href="assets/Nader-Khalil-Developer-Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary lg">View Résumé</a>
@@ -134,40 +134,41 @@
                 <article class="feature-card glass">
                     <div class="feature-media">
                         <figure>
-                            <button class="shot" type="button" aria-label="Enlarge screenshot: The AI assistant proposing to move a student's appointment to the faculty member's next free slot, with a confirmation card and a Confirm button">
-                                <img src="assets/desktop-scheduler-assistant.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The AI assistant proposing to move a student's appointment to the faculty member's next free slot, with a confirmation card and a Confirm button">
+                            <button class="shot" type="button" aria-label="Enlarge screenshot: The AI assistant proposing to move a client's consultation to the advisor's next free slot, with a confirmation card and a Confirm button">
+                                <img src="assets/desktop-platform-assistant.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The AI assistant proposing to move a client's consultation to the advisor's next free slot, with a confirmation card and a Confirm button">
                             </button>
                         </figure>
                         <figure>
-                            <button class="shot" type="button" aria-label="Enlarge screenshot: The student dashboard: a weekly calendar of open, booked, and past appointment slots with search and college filters">
-                                <img src="assets/desktop-scheduler-dashboard.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The student dashboard: a weekly calendar of open, booked, and past appointment slots with search and college filters">
+                            <button class="shot" type="button" aria-label="Enlarge screenshot: The admin Knowledge Base page: a form to add or upload documents for the assistant, with a section picker and Visible to checkboxes for client, advisor, and administrator">
+                                <img src="assets/desktop-platform-knowledge.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The admin Knowledge Base page: a form to add or upload documents for the assistant, with a section picker and Visible to checkboxes for client, advisor, and administrator">
                             </button>
                         </figure>
                     </div>
                     <div class="feature-body project-content">
                         <div class="project-header">
-                            <h3>AI Appointment Scheduler</h3>
+                            <h3>AI Booking Platform</h3>
                             <div class="project-links">
-                                <button class="details-btn" type="button" data-details="details-scheduler" aria-haspopup="dialog" aria-label="Full project details: AI Appointment Scheduler">Details</button>
-                                <a href="https://waha-ai-appointments.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link demo-link" title="Live demo" aria-label="View AI Appointment Scheduler live demo">
+                                <a class="details-btn" href="case-study.html" aria-label="Read the AI Booking Platform case study">Case study</a>
+                                <button class="details-btn" type="button" data-details="details-platform" aria-haspopup="dialog" aria-label="Full project details: AI Booking Platform">Details</button>
+                                <a href="https://ai-booking-platform.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link demo-link" title="Live demo" aria-label="View AI Booking Platform live demo">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                                 </a>
                             </div>
                         </div>
                         <p class="project-subtitle">Full-Stack Web + RAG Assistant</p>
-                        <p class="project-desc">Students book faculty office hours from a live calendar, and an AI assistant answers from a knowledge base with citations and prepares bookings and changes that only run after the user confirms. The university theme is sample data; the flow fits any booking use case. Maintainable and strictly typed: Next.js 16, PostgreSQL with pgvector, Prisma, Auth.js, the Vercel AI SDK, Zod validation, a shared service layer, Docker, and CI.</p>
+                        <p class="project-desc">One booking engine for any appointment business: the business is configuration, not code. Clients book from a live calendar, and an AI assistant answers from a knowledge base that admins edit, upload to, and restrict by role, with citations, and prepares bookings and changes that only run after the user confirms. It grew out of my university scheduler; the sample business is a fictional consultancy. Maintainable and strictly typed: Next.js 16, PostgreSQL with pgvector, Prisma, Auth.js, the Vercel AI SDK, Zod validation, a shared service layer, Docker, and CI.</p>
                         <ul class="project-metrics">
-                            <li><strong data-count="500" data-suffix="+">500+</strong><span>unit, integration, and e2e tests</span></li>
-                            <li><strong data-count="115">115</strong><span>live assistant checks passing</span></li>
-                            <li><strong data-count="93" data-suffix="%">93%</strong><span>of input tokens served from cache</span></li>
+                            <li><strong data-count="700" data-suffix="+">700+</strong><span>unit, integration, and e2e tests</span></li>
+                            <li><strong data-count="120">120</strong><span>live assistant checks passing</span></li>
+                            <li><strong data-count="2">2</strong><span>sample businesses on the same code</span></li>
                         </ul>
                         <div class="project-highlights">
                             <p class="project-highlights-title">Engineering highlights</p>
                             <ul>
                             <li><strong>The AI can't act alone.</strong> Suggested bookings and cancellations need your confirmation before they run.</li>
-                            <li><strong>Answers cite their sources.</strong> Replies come from a knowledge base and name the documents used.</li>
+                            <li><strong>A knowledge base admins run themselves.</strong> Add, edit, or upload documents, group them in sections, and pick which roles may read each; the assistant cites only what that user can see.</li>
+                            <li><strong>Answers follow the settings.</strong> Change a booking rule in Admin and the assistant quotes the new value, with citations.</li>
                             <li><strong>Concurrency-safe bookings.</strong> Row locks and conditional updates stop simultaneous requests, proven by race tests.</li>
-                            <li><strong>Secure by default.</strong> CSP, server-side roles, rate-limited sign-in, and a review-found injection now covered by tests.</li>
                             </ul>
                         </div>
                         <div class="project-tags">
@@ -266,7 +267,7 @@
             <div class="projects-more glass">
                 <div>
                     <h3>More projects</h3>
-                    <p>A Docker infrastructure project (Inception), a multi-agent hackathon prototype, and nine systems projects from 42 Abu Dhabi in C and C++, including minishell, philosophers, ft_irc, and cub3D.</p>
+                    <p>The university scheduler this platform grew out of, a Docker infrastructure project (Inception), a multi-agent hackathon prototype, and nine systems projects from 42 Abu Dhabi in C and C++, including minishell, philosophers, ft_irc, and cub3D.</p>
                 </div>
                 <a href="projects.html" class="btn-primary">View all projects</a>
             </div>
@@ -338,7 +339,7 @@
                 <div class="skills-row"><dt>Backend</dt><dd>REST APIs&nbsp;· Layered architecture&nbsp;· Zod&nbsp;· Auth.js&nbsp;· PHP&nbsp;· C# MinimalAPI</dd></div>
                 <div class="skills-row"><dt>Data &amp; security</dt><dd>PostgreSQL + pgvector&nbsp;· MariaDB&nbsp;· Prisma&nbsp;· Row locks&nbsp;· CSP&nbsp;· CSRF&nbsp;· Rate limiting&nbsp;· CTF</dd></div>
                 <div class="skills-row"><dt>AI</dt><dd>LLM integration&nbsp;· Tool calling with human review&nbsp;· RAG&nbsp;· Embeddings&nbsp;· LLM evals&nbsp;· Prompt caching&nbsp;· Vercel AI SDK</dd></div>
-                <div class="skills-row"><dt>Testing &amp; CI</dt><dd>Vitest&nbsp;· Playwright&nbsp;· PHPUnit&nbsp;· Race tests&nbsp;· GitHub Actions&nbsp;· CodeQL&nbsp;· Docker</dd></div>
+                <div class="skills-row"><dt>Testing &amp; CI</dt><dd>Vitest&nbsp;· Playwright&nbsp;· PHPUnit&nbsp;· Race tests&nbsp;· GitHub Actions&nbsp;· Dependency audits&nbsp;· Docker</dd></div>
                 <div class="skills-row"><dt>Languages</dt><dd>TypeScript&nbsp;· JavaScript&nbsp;· Python&nbsp;· C&nbsp;· C++&nbsp;· C#&nbsp;· Linux</dd></div>
             </dl>
             <p class="sys-learned skills-practices fade-in"><strong>Practices:</strong> clean, maintainable code with clear separation of concerns, refactoring, technical decisions and their trade-offs, technical documentation and decision logs, pull-request workflow, mentoring and technical communication, self-directed learning.</p>
@@ -446,7 +447,7 @@
                     </div>
                     <div class="highlight-item">
                         <span class="highlight-number">Full-Stack</span>
-                        <span class="highlight-label">Web &amp; Agentic <span class="hl">AI</span></span>
+                        <span class="highlight-label">Web &amp; Applied <span class="hl">AI</span></span>
                     </div>
                     <div class="highlight-item">
                         <span class="highlight-number">AR/<span class="hl">EN</span></span>
@@ -494,62 +495,57 @@
         <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
     </footer>
 
-    <dialog id="details-scheduler" class="details-dialog" aria-labelledby="details-scheduler-title">
+    <dialog id="details-platform" class="details-dialog" aria-labelledby="details-platform-title">
         <div class="details-head">
             <div>
                 <p class="details-kicker">Full project details</p>
-                <h2 id="details-scheduler-title">AI Appointment Scheduler</h2>
+                <h2 id="details-platform-title">AI Booking Platform</h2>
             </div>
             <button class="details-close" type="button" aria-label="Close project details">&times;</button>
         </div>
         <div class="details-body">
-            <p class="details-summary">A booking platform for faculty office hours with an AI assistant that answers from a knowledge base with citations and only acts after the user confirms. University names, people and policies in the demo are fictional.</p>
+            <p class="details-summary">One booking engine for any appointment business: a business is configuration, not code. Clients book from a live calendar, and an AI assistant answers from a knowledge base the admin manages, with citations, and only acts after the user confirms. The sample business, people, prices and policies are fictional.</p>
             <div class="details-links">
-                <a class="btn-primary" href="https://waha-ai-appointments.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo</a>
+                <a class="btn-primary" href="https://ai-booking-platform.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo</a>
+                <a class="btn-secondary" href="case-study.html">Read the case study</a>
             </div>
             <section class="details-section">
                 <h3>Features</h3>
                 <div class="details-grid">
                 <div class="details-group">
-                    <h4>Students</h4>
+                    <h4>Clients</h4>
                     <ul>
-                        <li>Browse every faculty member's open office hours on a <strong>week, month or list calendar</strong> (week on wide screens, month on phones) with a status legend that filters</li>
-                        <li><strong>Book in one click</strong> from the calendar or the faculty directory, with an optional note and a 10-second undo</li>
-                        <li><strong>Reschedule</strong> within the same faculty member, <strong>cancel</strong> with an optional reason the faculty member sees, and edit notes</li>
-                        <li><strong>Export to a calendar app</strong> (.ics), get a day-before reminder, and see live notifications</li>
-                        <li><strong>Self-register</strong> (optionally restricted to a domain) and page through the full history of past and cancelled appointments</li>
+                        <li>Browse every advisor's open slots on a <strong>week, month or list calendar</strong>, filter by practice area, and <strong>book in one click</strong> with an optional note</li>
+                        <li><strong>Reschedule, cancel and undo</strong>, <strong>export to a calendar app</strong> (.ics), and get reminders and live notifications</li>
                     </ul>
                 </div>
                 <div class="details-group">
-                    <h4>Faculty</h4>
+                    <h4>Advisors</h4>
                     <ul>
-                        <li>Publish availability as <strong>single slots, back-to-back runs or weekly repeats</strong></li>
-                        <li><strong>Close, reopen or delete</strong> unbooked slots, and move or cancel students' appointments</li>
-                        <li><strong>Undo recent changes</strong> for 15 minutes, backed by an action journal</li>
+                        <li>Publish availability as <strong>single slots, back-to-back runs or weekly repeats</strong>, and close or reopen slots</li>
+                        <li><strong>Move or cancel appointments</strong>, and undo their own changes for 15 minutes</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>Admins</h4>
                     <ul>
-                        <li>An overview plus searchable, pageable <strong>users, appointments, slots and a cross-user activity log</strong> (filters run in the database)</li>
-                        <li><strong>Create faculty, correct user details, cancel appointments and deactivate accounts</strong>, which cancels their upcoming appointments</li>
+                        <li>An overview, <strong>user management</strong> (create advisors, edit, deactivate), appointment cancellation, and a cross-user <strong>activity log</strong></li>
+                        <li><strong>Settings without a deploy:</strong> booking rules within the engine's safe range, feature toggles (rescheduling, note edits, weekly repeats, undo, a required cancellation reason), per-account abuse limits and the registration policy, effective immediately, journaled, and quoted by the assistant</li>
+                        <li><strong>Knowledge base:</strong> create, edit, upload, delete and restore the documents the assistant answers from, each visible to everyone or to chosen roles, organised in sections</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>AI assistant</h4>
                     <ul>
-                        <li>Answers policy and how-to questions <strong>with citations</strong>; each role retrieves only its own guide</li>
-                        <li>Prepares <strong>bookings, reschedules, cancellations, note changes, weekly slot patterns and undo</strong> as confirmation cards that run only after you confirm</li>
-                        <li>Understands <strong>follow-ups, relative dates and Arabic</strong></li>
+                        <li>Scoped to each role; answers questions about services and policies <strong>with citations</strong></li>
+                        <li>Prepares <strong>bookings, reschedules, cancellations, notes and slot changes</strong> as confirmation cards that run only after you confirm</li>
+                        <li>Understands <strong>follow-ups, relative dates and Arabic</strong>, never invents prices, and leaves case-specific advice to a consultation</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>Everyone</h4>
                     <ul>
-                        <li><strong>Account settings</strong> for name and password; a password change signs out other devices and keeps the current one</li>
-                        <li><strong>Notifications</strong> with colour-coded kinds, a live badge that shows an unread breakdown on hover, an alert card for important arrivals, and mark-all-read or clear-read</li>
-                        <li><strong>Booking rules in one place:</strong> book at least an hour ahead, change up to an hour before, no changes after the start, and at most 2 upcoming appointments per faculty member; shown in a popover and stated by the assistant</li>
-                        <li><strong>One-click guest sign-in</strong> for student, faculty and admin, with a weekly sample-data reset</li>
+                        <li><strong>One-click guest sign-in</strong> for client, advisor and admin, with a weekly sample-data refresh</li>
                     </ul>
                 </div>
                 </div>
@@ -561,45 +557,59 @@
                     <h4>Architecture</h4>
                     <ul>
                         <li>Next.js 16 (App Router), React 19, TypeScript in strict mode and Tailwind CSS 4</li>
-                        <li>Route handlers validate every input with Zod and return typed errors</li>
-                        <li><strong>One write path:</strong> every change goes through <code>lib/services</code> (checks, then a transaction that journals the change for undo); business limits live in one <code>lib/rules.ts</code> that feeds enforcement, the rules popover, the assistant's prompt and the tests</li>
-                        <li>All times use the campus time zone (IANA, DST-safe), including what the assistant sees</li>
+                        <li>Route handlers validate every input with Zod</li>
+                        <li><strong>One write path:</strong> every change goes through <code>lib/services</code> (checks, then a transaction that journals the change for undo); limits live in <code>lib/rules.ts</code>, which feeds enforcement, the rules popover, the assistant's prompt and the tests</li>
+                        <li>Everything is entered and shown in the business's time zone (IANA, DST-safe)</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>The business is configuration</h4>
+                    <ul>
+                        <li>The code never names its domain: what clients, providers and appointments are called, the field labels, landing copy, the assistant's scope, demo personas, knowledge base and seed data all come from one domain profile</li>
+                        <li>Two profiles ship side by side (a business-setup consultancy and the university the engine grew out of), and a unit test fails if a profile's words leak into code</li>
+                    </ul>
+                </div>
+                <div class="details-group">
+                    <h4>Configurable knowledge base</h4>
+                    <ul>
+                        <li><strong>Admins manage it in the app,</strong> with no deploy: create and edit documents, upload up to 20 markdown or text files in one all-or-nothing batch, hide and restore them, and file them under sections they add, rename and reorder</li>
+                        <li><strong>Per-role visibility:</strong> each document, and each section's default for new ones, is visible to everyone or to any set of roles, and retrieval filters on that in SQL, so the assistant never cites a document the asking role can't read</li>
+                        <li><strong>Rules feed the assistant:</strong> the booking-rules document and the role guides are rendered from templates with the current settings, so a rule changed in Admin is quoted by the assistant straight away</li>
+                        <li><strong>One write path:</strong> every edit, upload and rule change is chunked, embedded and written through the same service, journaled, and searchable and filterable in the database</li>
+                        <li><strong>Safe by construction:</strong> uploads are text-only, size-capped by counting bytes and never written to disk, and invisible or bidirectional text is rejected, with an adversarial test suite behind it</li>
+                        <li>On the public demo, the shared guest admin's changes expire after 24 hours</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>Data and concurrency</h4>
                     <ul>
-                        <li>PostgreSQL 16 with pgvector through Prisma 7; a unique key on (faculty, start time) prevents overlapping slots, and cancelled appointments stay as history</li>
-                        <li>A slot is claimed with a <strong>conditional update</strong> inside a transaction; the student's row is locked so overlap and limit checks cannot race, and an advisory lock protects the last-admin rule</li>
-                        <li>Race tests run against a real Postgres</li>
+                        <li>PostgreSQL 16 with pgvector through Prisma 7</li>
+                        <li>A slot is claimed with a <strong>conditional update</strong>; the client's row is locked so overlap and fairness checks (no double-booking, at most 2 upcoming appointments per advisor) cannot race</li>
+                        <li>Concurrency is tested against a real Postgres</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>AI assistant</h4>
                     <ul>
-                        <li><strong>Retrieval:</strong> the knowledge base is chunked (about 600 tokens, about 12% overlap), embedded as 384-dimension vectors, and the nearest 8 chunks by cosine similarity are fetched from pgvector, filtered by role in SQL</li>
-                        <li><strong>Generation:</strong> DeepSeek through the Vercel AI SDK with 15 role-scoped tools (read and write) and streamed answers with citations</li>
-                        <li><strong>Safety:</strong> tools only return proposals, a confirmation calls the same REST API a click would, client-sent tool output is discarded, and chat history stays in the browser</li>
-                        <li>The prompt layout keeps about 93% of input tokens cached, and replies start in under 3 seconds</li>
-                        <li><strong>Evaluation:</strong> a retrieval eval of about 20 golden questions and a live suite of about 115 checks (injection, data leaks, scope, ambiguity, Arabic, multi-turn) that gates prompt changes</li>
+                        <li><strong>Retrieval:</strong> documents are chunked (about 600 tokens, 12% overlap), embedded as 384-dimension vectors and fetched from pgvector, with each role retrieving only its own guide, filtered in SQL</li>
+                        <li><strong>Generation:</strong> DeepSeek through the Vercel AI SDK with 15 role-scoped tools and streamed answers with citations</li>
+                        <li><strong>Safety:</strong> tools only return proposals, a confirmation calls the same REST API a click would, and client-sent tool output is discarded</li>
+                        <li><strong>Evaluation:</strong> a retrieval eval of 22 golden questions and a live suite of about 120 checks (injection, data leaks, scope, ambiguity, Arabic, multi-turn) that gates prompt changes</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>Security</h4>
                     <ul>
-                        <li>Roles and account deactivation are re-checked from the database on every request</li>
-                        <li>Nonce-based CSP and HSTS, JSON-only request bodies, and bcrypt password hashing</li>
-                        <li>Rate limits (Upstash) on sign-in, password changes and the assistant</li>
-                        <li>Names reject hidden characters, and calendar exports keep user text inside its field (a bug found in an edge-case review and fixed under test)</li>
-                        <li>Sentry error tracking with personal-data collection off; Dependabot, CodeQL and a CI dependency audit</li>
+                        <li>Roles and deactivation are re-checked from the database on every request; nonce-based CSP and HSTS; bcrypt passwords; per-user and per-IP rate limits (Upstash)</li>
+                        <li><strong>A public admin login that can't break the demo:</strong> the guest admin can't lift abuse limits or close registration, its knowledge changes expire after 24 hours, and stale forms get a conflict instead of overwriting a newer change</li>
+                        <li>Sentry error tracking with personal-data collection off; Dependabot and a CI dependency audit</li>
                     </ul>
                 </div>
                 <div class="details-group">
                     <h4>Testing and delivery</h4>
                     <ul>
-                        <li>270 unit, 184 integration (against Postgres) and 67 end-to-end tests, including axe accessibility scans in both themes and phone-width layout checks</li>
-                        <li>CI on every push: dependency audit, lint, typecheck, unit, integration, end-to-end and a production build, with CodeQL alongside</li>
-                        <li>Multi-stage Docker image on Render with Neon (Postgres and pgvector), expand-then-contract migrations through a migrate workflow, a monitored health check, a weekly sample-data reset, and Neon restore points</li>
+                        <li>340 unit, 302 integration (against Postgres) and 84 end-to-end tests, including axe accessibility scans (WCAG 2.1 AA) in light and dark</li>
+                        <li>CI on every push; a Docker image on Render with Neon (Postgres and pgvector), expand-then-contract migrations so the live site keeps working while the database changes, and a weekly sample-data refresh</li>
                     </ul>
                 </div>
                 </div>
@@ -712,6 +722,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261013e"></script>
+    <script src="script.js?v=20261013v"></script>
 </body>
 </html>

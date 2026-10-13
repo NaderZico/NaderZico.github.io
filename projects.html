@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#05080f">
     <title>Projects | Nader Khalil</title>
-    <meta name="description" content="More projects by Nader Khalil: Docker infrastructure, a multi-agent AI prototype, and C and C++ systems work from 42 Abu Dhabi.">
+    <meta name="description" content="More projects by Nader Khalil: the AI Appointment Scheduler, a Docker infrastructure project, a multi-agent AI prototype, and C and C++ systems work from 42 Abu Dhabi.">
     <link rel="canonical" href="https://naderzico.github.io/projects.html">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Nader Khalil">
     <meta property="og:title" content="Projects | Nader Khalil">
-    <meta property="og:description" content="Docker infrastructure, a multi-agent prototype, and systems projects in C and C++.">
+    <meta property="og:description" content="The AI Appointment Scheduler, Docker infrastructure, a multi-agent prototype, and systems projects in C and C++.">
     <meta property="og:url" content="https://naderzico.github.io/projects.html">
     <meta property="og:image" content="https://naderzico.github.io/assets/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -22,13 +22,13 @@
     <meta property="og:image:alt" content="Nader Khalil, Full-Stack Software Engineer">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Projects | Nader Khalil">
-    <meta name="twitter:description" content="Docker infrastructure, a multi-agent prototype, and systems projects in C and C++.">
+    <meta name="twitter:description" content="The AI Appointment Scheduler, Docker infrastructure, a multi-agent prototype, and systems projects in C and C++.">
     <meta name="twitter:image" content="https://naderzico.github.io/assets/og-image.png">
     <!-- Google Fonts -->
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261013e">
+    <link rel="stylesheet" href="styles.css?v=20261013v">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -79,10 +79,32 @@
         </section>
 
         <div class="projects-band">
-        <section id="more" class="section">
-            <h2 class="section-title fade-in">More <span class="hl">Projects</span></h2>
-            <p class="section-intro fade-in">The featured projects are on the <a href="index.html#projects">home page</a>. These are smaller builds across infrastructure and agentic AI.</p>
+        <section id="more" class="section no-count">
+            <h2 class="visually-hidden">Other projects</h2>
+            <p class="section-intro fade-in">The featured projects are on the <a href="index.html#projects">home page</a>. The predecessor of the featured booking platform, plus smaller builds across infrastructure and agentic AI.</p>
             <div class="projects-grid">
+                <div class="project-card glass">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>AI Appointment Scheduler</h3>
+                            <div class="project-links">
+                                <a href="https://waha-ai-appointments.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link demo-link" title="Live demo" aria-label="View AI Appointment Scheduler live demo">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-subtitle">Full-Stack Web + RAG Assistant</p>
+                        <p class="project-desc">The university-themed predecessor of AI Booking Platform: students book faculty office hours from a live calendar, and an AI assistant answers from a knowledge base with citations and prepares bookings that only run after the user confirms. Next.js, PostgreSQL with pgvector, and 500+ automated tests.</p>
+                        <div class="project-tags">
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>PostgreSQL</span>
+                            <span>pgvector</span>
+                            <span>RAG</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="project-card glass">
                     <div class="project-content">
                         <div class="project-header">
@@ -258,6 +280,6 @@
         <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
     </footer>
 
-    <script src="script.js?v=20261013e"></script>
+    <script src="script.js?v=20261013v"></script>
 </body>
 </html>

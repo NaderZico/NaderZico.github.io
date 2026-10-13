@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05080f">
+    <title>AI Booking Platform case study | Nader Khalil</title>
+    <meta name="description" content="How I built a booking engine where a business is configuration, not code, with an AI assistant that answers from an admin-managed knowledge base and never acts without confirmation.">
+    <link rel="canonical" href="https://naderzico.github.io/case-study.html">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <!-- Social previews -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nader Khalil">
+    <meta property="og:title" content="AI Booking Platform case study | Nader Khalil">
+    <meta property="og:description" content="How I built a booking engine where a business is configuration, not code, with an AI assistant that answers from an admin-managed knowledge base and never acts without confirmation.">
+    <meta property="og:url" content="https://naderzico.github.io/case-study.html">
+    <meta property="og:image" content="https://naderzico.github.io/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nader Khalil, Full-Stack Software Engineer">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Booking Platform case study | Nader Khalil">
+    <meta name="twitter:description" content="How I built a booking engine where a business is configuration, not code, with an AI assistant that answers from an admin-managed knowledge base and never acts without confirmation.">
+    <meta name="twitter:image" content="https://naderzico.github.io/assets/og-image.png">
+    <!-- Google Fonts -->
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=20261013v">
+    <script>
+        (function () {
+            // Lets the CSS hide fade-in sections only when scripts can reveal them again.
+            document.documentElement.classList.add('js');
+            // A saved choice wins; on a first visit follow the visitor's OS setting.
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'light' ? '#f4f6fa' : '#05080f');
+        })();
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="navbar" aria-label="Primary">
+        <div class="nav-content">
+            <a href="index.html" class="logo">NK<span class="highlight">.</span></a>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact" class="btn-primary">Contact Me</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section class="page-head">
+            <a class="back-link" href="index.html#projects">&larr; Back to portfolio</a>
+            <h1 class="page-title">AI Booking Platform <span class="hl">Case Study</span></h1>
+            <p class="case-lead">A booking engine where a business is configuration, not code. Clients book from a live calendar, and an AI assistant answers from a knowledge base the admin manages, with citations, and never acts without the user's confirmation.</p>
+            <div class="case-cta">
+                <a href="https://ai-booking-platform.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-primary lg">Try the live demo</a>
+            </div>
+            <figure class="case-video">
+                <video controls preload="none" playsinline poster="assets/booking-platform-poster.webp" width="1280" height="800">
+                    <source src="assets/booking-platform-walkthrough.mp4" type="video/mp4">
+                    Your browser can't play this video. <a href="assets/booking-platform-walkthrough.mp4">Open it directly</a>.
+                </video>
+                <figcaption>A one-minute walkthrough: the calendar (filter, month, list, one-click booking and undo), a cited answer, a confirmation card, then an admin changes a booking rule and the assistant quotes the new value.</figcaption>
+            </figure>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">The problem</h2>
+            <div class="case-prose fade-in">
+                <p>Booking tools rarely answer questions. You pick a slot, then email someone to ask what it costs or how late you can cancel. Chatbots answer questions, but giving one the power to book or cancel is risky, because a wrong guess changes a real person's appointment.</p>
+                <p>I wanted both in one place: an assistant that knows the business and can prepare any change a client asks for, but can never run one on its own.</p>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">How it fits together</h2>
+            <div class="case-prose fade-in">
+                <p>Every change to data goes through one service layer that holds the rules. The pages, the REST routes, and the assistant all use it, so the assistant can't do anything a click couldn't. Its tools only return proposals, and confirming one calls the same REST API a click would.</p>
+            </div>
+            <figure class="case-diagram fade-in">
+                <svg class="case-svg" viewBox="0 0 760 330" role="img" aria-labelledby="arch-title arch-desc">
+                    <title id="arch-title">How the booking platform fits together</title>
+                    <desc id="arch-desc">The browser talks to route handlers, which call one service layer that holds the rules and talks to PostgreSQL. The assistant uses retrieval over pgvector for answers and can only send proposals to the same service layer.</desc>
+                    <defs>
+                        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="svg-arrow"></path></marker>
+                    </defs>
+                    <g class="svg-lines">
+                        <path d="M130 76V130" marker-end="url(#arr)"></path>
+                        <path d="M230 158H280" marker-end="url(#arr)"></path>
+                        <path d="M570 76V100H430V130" marker-end="url(#arr)"></path>
+                        <path d="M660 76V130" marker-end="url(#arr)"></path>
+                        <path d="M380 186V250" marker-end="url(#arr)"></path>
+                        <path d="M630 186V278H480" marker-end="url(#arr)"></path>
+                    </g>
+                    <g class="svg-box"><rect x="30" y="20" width="200" height="56" rx="4"></rect><text x="130" y="44" class="svg-title">Browser</text><text x="130" y="62" class="svg-sub">React UI</text></g>
+                    <g class="svg-box"><rect x="30" y="130" width="200" height="56" rx="4"></rect><text x="130" y="154" class="svg-title">Route handlers</text><text x="130" y="172" class="svg-sub">Zod, auth, rate limits</text></g>
+                    <g class="svg-box svg-key"><rect x="280" y="130" width="200" height="56" rx="4"></rect><text x="380" y="154" class="svg-title">Service layer</text><text x="380" y="172" class="svg-sub">rules + transactions</text></g>
+                    <g class="svg-box"><rect x="530" y="20" width="200" height="56" rx="4"></rect><text x="630" y="44" class="svg-title">AI assistant</text><text x="630" y="62" class="svg-sub">role-scoped tools + LLM</text></g>
+                    <g class="svg-box"><rect x="530" y="130" width="200" height="56" rx="4"></rect><text x="630" y="154" class="svg-title">Retrieval</text><text x="630" y="172" class="svg-sub">role-filtered search</text></g>
+                    <g class="svg-box"><rect x="280" y="250" width="200" height="56" rx="4"></rect><text x="380" y="274" class="svg-title">PostgreSQL</text><text x="380" y="292" class="svg-sub">Prisma + pgvector</text></g>
+                    <text x="436" y="94" class="svg-note">proposals only</text>
+                    <text x="668" y="108" class="svg-note">asks</text>
+                </svg>
+            </figure>
+            <ol class="case-flow">
+                <li><strong>Pages and clicks:</strong> the browser calls route handlers (Zod validation, auth, rate limits), which call the service layer (rules and transactions), which writes to PostgreSQL.</li>
+                <li><strong>The assistant:</strong> it searches the knowledge base through retrieval that only returns what the asking role may read, and it can only send proposals to the same service layer.</li>
+            </ol>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">Four decisions</h2>
+
+            <div class="case-decisions">
+            <article class="case-decision glass">
+                <h3>The assistant prepares, the user confirms</h3>
+                <p>A booking assistant that acts on a wrong guess is worse than none. Its tools return proposals that appear as a confirmation card, and only the user's click runs them. Tool output sent from the browser is discarded, so nobody can forge a proposal.</p>
+                <p class="case-tradeoff"><strong>Trade-off:</strong> one extra click and slower than a fully autonomous agent, in exchange for an assistant that can't double-book or cancel the wrong appointment. A live suite of about 120 checks (prompt injection, data leaks, scope, ambiguity, Arabic, multi-turn) gates every prompt change.</p>
+            </article>
+
+            <article class="case-decision glass">
+                <h3>A knowledge base the admin controls</h3>
+                <p>Admins add, edit, upload, and hide documents in the app, file them under their own sections, and choose which roles can read each one. Retrieval filters on that in SQL, so the assistant never cites something the asking role can't see.</p>
+                <p>The booking rules are part of it: change the cancellation cutoff in Settings and the assistant quotes the new value straight away, as in the video.</p>
+                <p class="case-tradeoff"><strong>Trade-off:</strong> every edit is chunked and embedded, and switching the embedding model means re-indexing everything.</p>
+            </article>
+
+            <article class="case-decision glass">
+                <h3>A business is configuration, not code</h3>
+                <p>The code never names its domain. What clients, providers, and appointments are called, the field labels, the landing copy, the assistant's scope, the demo personas, the knowledge base, and the sample data all come from one domain profile. Two ship side by side, a business-setup consultancy and the university the engine grew out of, and a unit test fails if a profile's words leak into code.</p>
+                <p class="case-tradeoff"><strong>Trade-off:</strong> generic names in the code (client, provider, admin) and some up-front abstraction, paid back by switching business without touching code.</p>
+            </article>
+
+            <article class="case-decision glass">
+                <h3>Sharing an admin login with strangers</h3>
+                <p>The guest admin's password is on the landing page, so I treat it as anyone on the internet. It can't lift the abuse limits or close registration, its knowledge changes expire after 24 hours, and settings and document saves carry the version they loaded, so a stale form gets a conflict instead of overwriting a newer change.</p>
+                <p class="case-tradeoff"><strong>Trade-off:</strong> visitors share the guest accounts and their daily limits, and a visitor can still make a mess until the weekly reset. A real deployment has none of this, because the demo accounts are switched off.</p>
+            </article>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">Smaller details</h2>
+            <div class="case-prose fade-in">
+                <ul class="case-list">
+                    <li><strong>Security:</strong> roles and account deactivation are re-checked from the database on every request, every input is validated with Zod, passwords are hashed with bcrypt, and the site sends a nonce-based CSP and HSTS. Knowledge uploads are text-only and size-capped, with an adversarial test suite behind them.</li>
+                    <li><strong>Concurrency:</strong> a slot is claimed with a conditional update and the client's row is locked, so two people can't book the same slot or beat the per-advisor limit. Race tests run against a real Postgres.</li>
+                    <li><strong>Changing the database while it's live:</strong> expand-then-contract migrations keep the running site working while the schema changes.</li>
+                    <li><strong>Abuse and cost:</strong> per-user and per-IP rate limits, and a shared daily budget for assistant requests on the demo.</li>
+                    <li><strong>Tested:</strong> 340 unit, 302 integration (against Postgres), and 84 end-to-end tests, with automated accessibility scans in light and dark.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="case-pair">
+        <section class="section case-section">
+            <h2 class="section-title fade-in">What I'd do for a real business</h2>
+            <div class="case-prose fade-in">
+                <p>The demo features are switched off or inert on a real deployment, and nothing has to be deleted. In order: turn off the demo accounts, start from an empty database and create the first admin, load the business's own knowledge base, set the production configuration (public origin, rate-limit store, error tracking, a fresh secret), and size the hosting for real traffic. The repository documents each step.</p>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">What it doesn't cover yet</h2>
+            <div class="case-prose fade-in">
+                <ul class="case-list">
+                    <li>The retrieval eval and the live assistant suite describe the content files, so they don't cover documents an admin creates or edits in the app.</li>
+                    <li>The live assistant suite covers the consultancy profile only; the university profile has its own knowledge base but no restored scenario set yet.</li>
+                    <li>It runs on free hosting, so it is a demonstration, not something I would put a paying business on without the steps above.</li>
+                </ul>
+            </div>
+        </section>
+        </div>
+
+        <section class="section case-section">
+            <div class="case-end glass">
+                <div>
+                    <h2>Want to see more?</h2>
+                    <p>The code is private. I'm happy to walk through it on a call.</p>
+                </div>
+                <div class="case-cta">
+                    <a href="index.html#contact" class="btn-primary">Get in touch</a>
+                    <a href="index.html#projects" class="btn-secondary">Back to projects</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
+    </footer>
+
+    <script src="script.js?v=20261013v"></script>
+</body>
+</html>

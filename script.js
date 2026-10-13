@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cards rise as each one enters the screen, in sequence when several arrive together.
     // Watching every card (not its section) keeps this consistent at any window size.
     // Skipped for reduced motion; cards are never hidden without this script.
-    const CARDS = '.timeline-item, .cert-card, .sys-card, .project-card, .highlight-item, .edu-featured-card, .feature-card, .projects-more';
+    const CARDS = '.case-decision, .case-end, .timeline-item, .cert-card, .sys-card, .project-card, .highlight-item, .edu-featured-card, .feature-card, .projects-more';
     if (!reduceMotion && 'IntersectionObserver' in window) {
         const cards = [...document.querySelectorAll(CARDS)];
         cards.forEach(el => el.classList.add('reveal-item'));

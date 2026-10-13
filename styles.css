@@ -75,6 +75,9 @@
 
     /* Motion */
     --transition-smooth: all 0.18s ease;
+
+    /* Faint wash behind an outlined control on hover */
+    --hover-tint: color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 /* Light theme */
@@ -210,6 +213,15 @@ ul {
     border-color: var(--text);
 }
 
+/* Hover emphasis follows the control's role, so orange stays a signal:
+   - the big buttons (.btn-primary / .btn-secondary) keep the site's signature
+     inversion: primary clears its fill and turns orange, secondary fills in
+   - small outlined controls (Details, icon links, close buttons, theme toggle):
+     a faint tint and a full-strength border, no colour change
+   - the live-demo globe: its resting orange edge becomes full orange, so orange
+     keeps meaning "live"
+   - text links: orange text (see `a:hover`)
+   Cards lift instead; see their own rules. */
 .btn-primary:hover {
     background: transparent;
     color: var(--accent-warm);
@@ -349,7 +361,7 @@ ul {
 }
 
 .theme-toggle:hover {
-    color: var(--accent-warm);
+    background: var(--hover-tint);
 }
 
 .theme-toggle svg {
@@ -486,9 +498,9 @@ main {
 }
 
 .social-links a:hover {
-    color: var(--accent-warm);
-    border-color: var(--accent-warm);
-    transform: translateY(-2px);
+    color: var(--text);
+    background: var(--hover-tint);
+    border-color: var(--text);
 }
 
 .social-links svg {
@@ -758,13 +770,18 @@ main {
 
 .project-link:hover {
     color: var(--text);
-    background: var(--band-a);
+    background: var(--hover-tint);
     border-color: var(--text);
 }
 
 /* Live-demo link: same icon as its neighbours, only the border hints at it */
 .demo-link {
     border-color: color-mix(in srgb, var(--accent-warm) 85%, var(--border));
+}
+
+.project-link.demo-link:hover {
+    color: var(--accent-text);
+    border-color: var(--accent-warm);
 }
 
 .project-link svg {
@@ -1443,8 +1460,14 @@ a.cert-card:hover .cert-link-icon {
 }
 
 .details-btn:hover {
-    background: var(--band-a);
+    background: var(--hover-tint);
+    color: var(--text);
     border-color: var(--text);
+}
+
+a.details-btn {
+    display: inline-flex;
+    align-items: center;
 }
 
 .details-dialog {
@@ -1489,6 +1512,18 @@ a.cert-card:hover .cert-link-icon {
 .details-head h2 {
     font-size: 1.35rem;
     line-height: 1.25;
+}
+
+.details-close,
+.lightbox-close {
+    transition: var(--transition-smooth);
+}
+
+.details-close:hover,
+.lightbox-close:hover {
+    background: var(--hover-tint);
+    color: var(--text);
+    border-color: var(--text);
 }
 
 .details-close {
@@ -1973,4 +2008,285 @@ html.theme-switching *::after {
         padding: 0.6rem 0;
         margin: -0.6rem 0 0.6rem;
     }
+}
+
+/* Case study page: one 760px text column (media runs full width) and tighter
+   section spacing than the home page, because these sections are short. */
+.case-section {
+    padding: 40px 20px;
+}
+
+/* The page is an outline, not a sequence, so its headings carry no numbers. */
+.case-section .section-title::before {
+    display: none;
+}
+
+/* Two short sections side by side */
+.case-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-lead {
+    max-width: 760px;
+    margin: 1rem 0 1.6rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.case-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.case-video {
+    max-width: 900px;
+    margin: 2rem 0 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.case-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    background: var(--bg);
+}
+
+.case-video figcaption {
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+.case-prose {
+    max-width: 760px;
+}
+
+.case-prose p {
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+}
+
+.case-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.case-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    font-family: var(--font-mono);
+    color: var(--steel);
+}
+
+.case-list strong {
+    color: var(--text);
+}
+
+.case-diagram {
+    margin-top: 1.6rem;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+}
+
+.case-svg {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.svg-box rect {
+    fill: var(--surface-2);
+    stroke: var(--border-strong);
+    stroke-width: 1.2;
+}
+
+.svg-box.svg-key rect {
+    stroke: var(--accent-warm);
+    stroke-width: 1.6;
+}
+
+.svg-title {
+    fill: var(--text);
+    font: 600 14px var(--font-primary);
+    text-anchor: middle;
+}
+
+.svg-sub {
+    fill: var(--muted);
+    font: 11px var(--font-mono);
+    text-anchor: middle;
+}
+
+.svg-lines path {
+    fill: none;
+    stroke: var(--steel);
+    stroke-width: 1.5;
+}
+
+.svg-arrow {
+    fill: var(--steel);
+}
+
+.svg-note {
+    fill: var(--accent-text);
+    font: 11px var(--font-mono);
+}
+
+.case-decisions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.case-decision {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem 1.6rem;
+}
+
+.case-decision h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+}
+
+.case-decision p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+}
+
+.case-decision .case-tradeoff {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.case-tradeoff {
+    color: var(--text);
+    font-size: 0.9rem;
+    border-left: 2px solid var(--accent-warm);
+    padding-left: 0.8rem;
+}
+
+.case-tradeoff strong {
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.case-end {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    max-width: 760px;
+    padding: 1.6rem;
+}
+
+.case-end h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.case-end p {
+    color: var(--muted);
+}
+
+.case-flow {
+    display: none;
+    max-width: 760px;
+    margin-top: 1.4rem;
+    padding-left: 1.2rem;
+    list-style: decimal;
+}
+
+.case-flow li {
+    margin-bottom: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.case-flow strong {
+    color: var(--text);
+}
+
+@media (max-width: 560px) {
+    .case-diagram {
+        display: none;
+    }
+    .case-flow {
+        display: block;
+    }
+}
+
+.case-end .case-cta {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .case-pair,
+    .case-decisions {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .case-end {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .case-end .case-cta {
+        width: 100%;
+        gap: 0.5rem;
+    }
+    .case-end .case-cta a {
+        flex: 1 1 0;
+        padding: 0.7rem 0.3rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.02em;
+        text-align: center;
+    }
+}
+
+/* The first block on projects.html sits directly under the page title, so its
+   heading is kept for the outline and screen readers but not shown, and it
+   does not take a section number. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.section.no-count {
+    counter-increment: none;
+}
+
+.projects-band .section.no-count {
+    padding-top: 36px;
 }
