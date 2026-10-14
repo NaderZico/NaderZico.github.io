@@ -45,7 +45,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261013v">
+    <link rel="stylesheet" href="styles.css?v=20261014d">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -105,7 +105,7 @@
                 </p>
                 <div class="hero-cta">
                     <a href="assets/Nader-Khalil-Developer-Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary lg">View Résumé</a>
-                    <a href="#projects" class="btn-secondary lg">See My Work</a>
+                    <a href="#projects" class="btn-secondary lg btn-scroll">See My Work<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
                     <div class="social-links">
                         <a href="https://github.com/NaderZico" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -155,12 +155,14 @@
                                 </a>
                             </div>
                         </div>
-                        <p class="project-subtitle">Full-Stack Web + RAG Assistant</p>
-                        <p class="project-desc">One booking engine for any appointment business: the business is configuration, not code. Clients book from a live calendar, and an AI assistant answers from a knowledge base that admins edit, upload to, and restrict by role, with citations, and prepares bookings and changes that only run after the user confirms. It grew out of my university scheduler; the sample business is a fictional consultancy. Maintainable and strictly typed: Next.js 16, PostgreSQL with pgvector, Prisma, Auth.js, the Vercel AI SDK, Zod validation, a shared service layer, Docker, and CI.</p>
-                        <ul class="project-metrics">
-                            <li><strong data-count="700" data-suffix="+">700+</strong><span>unit, integration, and e2e tests</span></li>
-                            <li><strong data-count="120">120</strong><span>live assistant checks passing</span></li>
-                            <li><strong data-count="2">2</strong><span>sample businesses on the same code</span></li>
+                        <p class="project-subtitle">Booking engine + AI assistant</p>
+                        <p class="project-desc">A booking engine any appointment business can run from configuration, with an AI assistant that answers from the business's own knowledge base and never acts without the user's confirmation. It grew out of my university scheduler.</p>
+                        <p class="project-try"><strong>Try it:</strong> <a href="https://ai-booking-platform.onrender.com/" target="_blank" rel="noopener noreferrer">one click as a client, advisor, or admin</a>; no sign-up.</p>
+                        <ul class="project-metrics project-metrics--4">
+                            <li><strong data-count="93" data-suffix="%">93%</strong><span>cached input, lower cost</span></li>
+                            <li><strong data-count="700" data-suffix="+">700+</strong><span>automated tests</span></li>
+                            <li><strong data-count="120">120</strong><span>live AI checks passing</span></li>
+                            <li><strong data-count="2">2</strong><span>businesses, one codebase</span></li>
                         </ul>
                         <div class="project-highlights">
                             <p class="project-highlights-title">Engineering highlights</p>
@@ -168,7 +170,7 @@
                             <li><strong>The AI can't act alone.</strong> Suggested bookings and cancellations need your confirmation before they run.</li>
                             <li><strong>A knowledge base admins run themselves.</strong> Add, edit, or upload documents, group them in sections, and pick which roles may read each; the assistant cites only what that user can see.</li>
                             <li><strong>Answers follow the settings.</strong> Change a booking rule in Admin and the assistant quotes the new value, with citations.</li>
-                            <li><strong>Concurrency-safe bookings.</strong> Row locks and conditional updates stop simultaneous requests, proven by race tests.</li>
+                            <li><strong>Secure by default.</strong> Roles are re-checked on every request, every input is validated, and sign-in and the assistant are rate-limited.</li>
                             </ul>
                         </div>
                         <div class="project-tags">
@@ -207,20 +209,21 @@
                                 </a>
                             </div>
                         </div>
-                        <p class="project-subtitle">Full-Stack Web App · Capstone Rewrite</p>
-                        <p class="project-desc">A full rewrite of my senior capstone. Students book 5 to 45 minute slots in faculty office hours; faculty set their hours, closures, and booking rules, and approve sessions. It includes undo, reminders, ratings, and a waitlist. React 19 and TypeScript front end, a layered, framework-free PHP 8.4 API on MariaDB, deployed by GitHub Actions only when every test passes.</p>
+                        <p class="project-subtitle">Capstone rewrite in plain PHP and React</p>
+                        <p class="project-desc">A full rewrite of my senior capstone: students book 5 to 45 minute office-hour slots, and faculty set their hours, closures, booking rules, and approvals. Undo, reminders, ratings, and a waitlist are built in.</p>
+                        <p class="project-try"><strong>Try it:</strong> <a href="https://student-faculty-services-v2.infinityfree.io" target="_blank" rel="noopener noreferrer">one click as a student or faculty member</a>; no sign-up.</p>
                         <ul class="project-metrics">
-                            <li><strong data-count="500" data-suffix="+">500+</strong><span>PHPUnit, Vitest, and Playwright tests</span></li>
-                            <li><strong data-count="46">46</strong><span>REST API endpoints, no framework</span></li>
-                            <li><strong>100/100</strong><span>Lighthouse accessibility and best-practices scores</span></li>
+                            <li><strong>0</strong><span>double bookings in an 8-student race</span></li>
+                            <li><strong data-count="46">46</strong><span>API endpoints, no framework</span></li>
+                            <li><strong>100/100</strong><span>Lighthouse accessibility</span></li>
                         </ul>
                         <div class="project-highlights">
                             <p class="project-highlights-title">Engineering highlights</p>
                             <ul>
                             <li><strong>Ten booking rules, one transaction.</strong> Notice, overlaps, limits and closures are checked together, all or nothing.</li>
-                            <li><strong>Undo actions.</strong> Cancellations and closures can be undone for 10 seconds; the slot stays held and undo re-checks every rule.</li>
+                            <li><strong>Undo that re-checks every rule.</strong> Cancellations and closures can be undone for 10 seconds, and the slot stays held until then.</li>
                             <li><strong>Reliable reminders.</strong> One a day before, in the app or by email, cancelled with the appointment and never sent twice.</li>
-                            <li><strong>Race-tested bookings.</strong> Eight students book one slot at once and exactly one wins; the test fails without the lock.</li>
+                            <li><strong>Tested before every deploy.</strong> 500+ PHPUnit, Vitest, and Playwright tests, including accessibility checks, must pass before GitHub Actions deploys.</li>
                             </ul>
                         </div>
                         <div class="project-tags">
@@ -594,6 +597,7 @@
                         <li><strong>Retrieval:</strong> documents are chunked (about 600 tokens, 12% overlap), embedded as 384-dimension vectors and fetched from pgvector, with each role retrieving only its own guide, filtered in SQL</li>
                         <li><strong>Generation:</strong> DeepSeek through the Vercel AI SDK with 15 role-scoped tools and streamed answers with citations</li>
                         <li><strong>Safety:</strong> tools only return proposals, a confirmation calls the same REST API a click would, and client-sent tool output is discarded</li>
+                        <li><strong>Cost:</strong> the prompt layout keeps 93–94% of the assistant's input served from the provider's cache on full live runs</li>
                         <li><strong>Evaluation:</strong> a retrieval eval of 22 golden questions and a live suite of about 120 checks (injection, data leaks, scope, ambiguity, Arabic, multi-turn) that gates prompt changes</li>
                     </ul>
                 </div>
@@ -706,7 +710,7 @@
                 <div class="details-group">
                     <h4>Testing and delivery</h4>
                     <ul>
-                        <li>334 PHPUnit tests (unit tests and feature tests through the real router), plus real-HTTP tests through Apache, 139 Vitest tests, and 20 Playwright tests that run on desktop and phone with axe accessibility checks in light and dark mode</li>
+                        <li>339 PHPUnit tests (unit tests and feature tests through the real router), plus real-HTTP tests through Apache, 143 Vitest tests, and 20 Playwright tests that run on desktop and phone with axe accessibility checks in light and dark mode</li>
                         <li>The booking race test was proven by removing the lock: without it, it produced double bookings; Lighthouse scores 100 for accessibility and best practices on the login page</li>
                         <li>GitHub Actions runs the web and API checks, integration tests and a production-layout check, and deploys only when everything passes; local development and CI use the same MariaDB version as production</li>
                         <li>A README with architecture and data-model diagrams, a handoff guide for new developers, and a deploy guide with the migration procedure</li>
@@ -722,6 +726,6 @@
         <img alt="">
     </dialog>
 
-    <script src="script.js?v=20261013v"></script>
+    <script src="script.js?v=20261014d"></script>
 </body>
 </html>

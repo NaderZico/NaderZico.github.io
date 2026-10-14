@@ -28,7 +28,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261013v">
+    <link rel="stylesheet" href="styles.css?v=20261014d">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -168,10 +168,10 @@
             <h2 class="section-title fade-in">Smaller details</h2>
             <div class="case-prose fade-in">
                 <ul class="case-list">
-                    <li><strong>Security:</strong> roles and account deactivation are re-checked from the database on every request, every input is validated with Zod, passwords are hashed with bcrypt, and the site sends a nonce-based CSP and HSTS. Knowledge uploads are text-only and size-capped, with an adversarial test suite behind them.</li>
+                    <li><strong>Security:</strong> roles and account deactivation are re-checked from the database on every request, every input is validated with Zod, passwords are hashed with bcrypt, the site sends a nonce-based CSP and HSTS, and the database connection uses TLS with certificate verification. Knowledge uploads are text-only and size-capped, with an adversarial test suite behind them.</li>
                     <li><strong>Concurrency:</strong> a slot is claimed with a conditional update and the client's row is locked, so two people can't book the same slot or beat the per-advisor limit. Race tests run against a real Postgres.</li>
                     <li><strong>Changing the database while it's live:</strong> expand-then-contract migrations keep the running site working while the schema changes.</li>
-                    <li><strong>Abuse and cost:</strong> per-user and per-IP rate limits, and a shared daily budget for assistant requests on the demo.</li>
+                    <li><strong>Abuse and cost:</strong> per-user and per-IP rate limits, a shared daily budget for assistant requests on the demo, and a prompt layout that keeps about 93% of the assistant's input served from cache.</li>
                     <li><strong>Tested:</strong> 340 unit, 302 integration (against Postgres), and 84 end-to-end tests, with automated accessibility scans in light and dark.</li>
                 </ul>
             </div>
@@ -181,7 +181,7 @@
         <section class="section case-section">
             <h2 class="section-title fade-in">What I'd do for a real business</h2>
             <div class="case-prose fade-in">
-                <p>The demo features are switched off or inert on a real deployment, and nothing has to be deleted. In order: turn off the demo accounts, start from an empty database and create the first admin, load the business's own knowledge base, set the production configuration (public origin, rate-limit store, error tracking, a fresh secret), and size the hosting for real traffic. The repository documents each step.</p>
+                <p>The demo features are switched off or inert on a real deployment, and nothing has to be deleted: turn off the demo accounts, start from an empty database with a first admin, and load the business's own knowledge base. Around that: an always-on instance with an uptime alert and a custom domain, a managed Postgres with point-in-time restore, a spending limit on the AI model, and a privacy policy that names who processes what (the host, the AI provider, which sees chat messages and the passages it retrieves, and the embedding provider). Before inviting users, the business's own questions go through the retrieval eval, each role is tried once on the live site, and a restore from backup is tested.</p>
             </div>
         </section>
 
@@ -191,8 +191,9 @@
                 <ul class="case-list">
                     <li>The retrieval eval and the live assistant suite describe the content files, so they don't cover documents an admin creates or edits in the app.</li>
                     <li>The live assistant suite covers the consultancy profile only; the university profile has its own knowledge base but no restored scenario set yet.</li>
-                    <li>There's no email yet: reminders and notifications appear in the app, and email verification and password reset were left out of the demo. A real deployment would add an email provider for these.</li>
-                    <li>It runs on free hosting, so it is a demonstration, not something I would put a paying business on without the steps above.</li>
+                    <li>There's no email yet, so no password recovery either, and no multi-factor sign-in. Reminders and notifications appear in the app.</li>
+                    <li>One business per deployment, and no payments.</li>
+                    <li>It's a public demo: the guest accounts are shared with every visitor and reset weekly, so it shows the product rather than running a business.</li>
                 </ul>
             </div>
         </section>
@@ -216,6 +217,6 @@
         <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
     </footer>
 
-    <script src="script.js?v=20261013v"></script>
+    <script src="script.js?v=20261014d"></script>
 </body>
 </html>
