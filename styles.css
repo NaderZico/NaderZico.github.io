@@ -45,7 +45,6 @@
     --text: #f4f7fb;
     --muted: #8ea3c0;
     --steel: #78a6d8;
-    --steel-bright: #8ec8ff;
     --accent-warm: #ff8a3d;
     --accent-text: #ff8a3d;
     --available: #22c55e;
@@ -94,7 +93,6 @@
     --text: #0e1b2b;
     --muted: #56657a;
     --steel: #2f6fb0;
-    --steel-bright: #1a6fd4;
     /* Vibrant orange for titles, dots, borders, and hover states */
     --accent-warm: #d9671d;
     /* Deeper orange for small text, which needs 4.5:1 on light surfaces */
