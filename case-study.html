@@ -92,8 +92,8 @@
         <section class="section case-section">
             <h2 class="section-title fade-in">The problem</h2>
             <div class="case-prose fade-in">
-                <p>Booking tools rarely answer questions. You pick a slot, then email someone to ask what it costs or how late you can cancel. Chatbots answer questions, but giving one the power to book or cancel is risky, because a wrong guess changes a real person's appointment.</p>
-                <p>I wanted both in one place: an assistant that knows the business and can prepare any change a client asks for, but can never run one on its own.</p>
+                <p>An appointment business lives in two places: a calendar that takes the booking but can't answer "what does it cost?" or "how late can I cancel?", and a person who answers all of that by hand, one email at a time. A chatbot could take the questions instead, but giving one the power to book or cancel risks changing a real person's appointment on a wrong guess.</p>
+                <p>Every one of those businesses has the same need, so I built it once instead of per business: a client gets a straight answer from the business's own information, and any change is prepared for them but never runs until they confirm it.</p>
             </div>
         </section>
 
@@ -152,7 +152,7 @@
 
             <article class="case-decision glass">
                 <h3>A business is configuration, not code</h3>
-                <p>The code never names its domain. What clients, providers, and appointments are called, the field labels, the landing copy, the assistant's scope, the demo personas, the knowledge base, and the sample data all come from one domain profile. Two ship side by side, a business-setup consultancy and the university the engine grew out of, and a unit test fails if a profile's words leak into code.</p>
+                <p>The code never names its domain. What clients, providers, and appointments are called, the field labels, the landing copy, the assistant's scope, the demo personas, the knowledge base, and the sample data all come from one domain profile. Two ship side by side, a business-setup consultancy and a university, and a unit test fails if a profile's words leak into code. The engine grew out of my <a href="projects.html#more">AI Appointment Scheduler</a>.</p>
                 <p class="case-tradeoff"><strong>Trade-off:</strong> generic names in the code (client, provider, admin) and some up-front abstraction, paid back by switching business without touching code.</p>
             </article>
 
