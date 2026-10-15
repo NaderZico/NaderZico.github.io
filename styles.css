@@ -1283,10 +1283,6 @@ main {
     border-color: var(--border-strong);
 }
 
-.edu-active {
-    border-left: 2px solid var(--steel);
-}
-
 .edu-featured-icon {
     width: 44px;
     height: 44px;
@@ -1315,31 +1311,6 @@ main {
     font-weight: 500;
     font-size: 0.9rem;
     margin-bottom: 0.15rem;
-}
-
-.edu-date {
-    font-family: var(--font-mono);
-    color: var(--steel);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.8rem;
-}
-
-.badge-active {
-    display: inline-block;
-    background: transparent;
-    border: 1px solid var(--steel);
-    color: var(--steel);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 0.15rem 0.55rem;
-    border-radius: var(--radius);
 }
 
 .edu-desc {
