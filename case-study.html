@@ -19,7 +19,7 @@
     <meta property="og:image" content="https://naderkhalil.dev/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Nader Khalil, Full-Stack Software Engineer">
+    <meta property="og:image:alt" content="Nader Khalil, Full-Stack Developer">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Booking Platform case study | Nader Khalil">
     <meta name="twitter:description" content="How I built a booking engine where a business is configuration, not code, with an AI assistant that answers from an admin-managed knowledge base and never acts without confirmation.">
@@ -28,7 +28,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261014f">
+    <link rel="stylesheet" href="styles.css?v=20261020i">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -78,7 +78,7 @@
             <h1 class="page-title">AI Booking Platform <span class="hl">Case Study</span></h1>
             <p class="case-lead">A booking engine where a business is configuration, not code. Clients book from a live calendar, and an AI assistant answers from a knowledge base the admin manages, with citations, and never acts without the user's confirmation.</p>
             <div class="case-cta">
-                <a href="https://booking.naderkhalil.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary lg">Try the live demo</a>
+                <a href="https://booking.naderkhalil.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary lg">Open the live build</a>
             </div>
             <figure class="case-video">
                 <video controls preload="none" playsinline poster="assets/booking-platform-poster.webp" width="1280" height="800">
@@ -152,14 +152,14 @@
 
             <article class="case-decision glass">
                 <h3>A business is configuration, not code</h3>
-                <p>The code never names its domain. What clients, providers, and appointments are called, the field labels, the landing copy, the assistant's scope, the demo personas, the knowledge base, and the sample data all come from one domain profile. Two ship side by side, a business-setup consultancy and a university, and a unit test fails if a profile's words leak into code. The engine grew out of my <a href="projects.html#more">AI Appointment Scheduler</a>.</p>
+                <p>The code never names its domain. What clients, providers, and appointments are called, the field labels, the landing copy, the assistant's scope, the guest personas, the knowledge base, and the sample data all come from one domain profile. Two ship side by side, a business-setup consultancy and a university, and a unit test fails if a profile's words leak into code. The engine grew out of my <a href="projects.html#more">AI Appointment Scheduler</a>.</p>
                 <p class="case-tradeoff"><strong>Trade-off:</strong> generic names in the code (client, provider, admin) and some up-front abstraction, paid back by switching business without touching code.</p>
             </article>
 
             <article class="case-decision glass">
                 <h3>Sharing an admin login with strangers</h3>
                 <p>The guest admin's password is on the landing page, so I treat it as anyone on the internet. It can't lift the abuse limits or close registration, its knowledge changes expire after 24 hours, and settings and document saves carry the version they loaded, so a stale form gets a conflict instead of overwriting a newer change.</p>
-                <p class="case-tradeoff"><strong>Trade-off:</strong> visitors share the guest accounts and their daily limits, and a visitor can still make a mess until the weekly reset. A real deployment has none of this, because the demo accounts are switched off.</p>
+                <p class="case-tradeoff"><strong>Trade-off:</strong> visitors share the guest accounts and their daily limits, and a visitor can still make a mess until the weekly reset. A real deployment has none of this, because the guest accounts are switched off.</p>
             </article>
             </div>
         </section>
@@ -170,9 +170,10 @@
                 <ul class="case-list">
                     <li><strong>Security:</strong> roles and account deactivation are re-checked from the database on every request, every input is validated with Zod, passwords are hashed with bcrypt, the site sends a nonce-based CSP and HSTS, and the database connection uses TLS with certificate verification. Knowledge uploads are text-only and size-capped, with an adversarial test suite behind them.</li>
                     <li><strong>Concurrency:</strong> a slot is claimed with a conditional update and the client's row is locked, so two people can't book the same slot or beat the per-advisor limit. Race tests run against a real Postgres.</li>
+                    <li><strong>Appointment email:</strong> confirmations, cancellation and reschedule notices, and reminders are queued in an outbox (the notices only after the change commits), then sent by an hourly job through Resend with retries and dedupe keys, so a mail failure never fails a booking. Guest accounts and anyone with email off are skipped.</li>
                     <li><strong>Changing the database while it's live:</strong> expand-then-contract migrations keep the running site working while the schema changes.</li>
-                    <li><strong>Abuse and cost:</strong> per-user and per-IP rate limits, a shared daily budget for assistant requests on the demo, and a prompt layout that keeps about 93% of the assistant's input served from cache.</li>
-                    <li><strong>Tested:</strong> 340 unit, 302 integration (against Postgres), and 84 end-to-end tests, with automated accessibility scans in light and dark.</li>
+                    <li><strong>Abuse and cost:</strong> per-user and per-IP rate limits, a shared daily budget for assistant requests on the public build, and a prompt layout that keeps about 93% of the assistant's input served from cache.</li>
+                    <li><strong>Tested:</strong> 357 unit, 320 integration (against Postgres), and 89 end-to-end tests, with automated accessibility scans in light and dark.</li>
                 </ul>
             </div>
         </section>
@@ -181,7 +182,7 @@
         <section class="section case-section">
             <h2 class="section-title fade-in">What I'd do for a real business</h2>
             <div class="case-prose fade-in">
-                <p>The demo features are switched off or inert on a real deployment, and nothing has to be deleted: turn off the demo accounts, start from an empty database with a first admin, and load the business's own knowledge base. Around that: an always-on instance with an uptime alert and a custom domain, a managed Postgres with point-in-time restore, a spending limit on the AI model, and a privacy policy that names who processes what (the host, the AI provider, which sees chat messages and the passages it retrieves, and the embedding provider). Before inviting users, the business's own questions go through the retrieval eval, each role is tried once on the live site, and a restore from backup is tested.</p>
+                <p>The public build's features are switched off or inert on a real deployment, and nothing has to be deleted: turn off the guest accounts, start from an empty database with a first admin, and load the business's own knowledge base. Around that: an always-on instance with an uptime alert and a custom domain, a verified sending domain for appointment email, a managed Postgres with point-in-time restore, a spending limit on the AI model, and a privacy policy that names who processes what (the host, the AI provider, which sees chat messages and the passages it retrieves, and the embedding provider). Before inviting users, the business's own questions go through the retrieval eval, each role is tried once on the live site, and a restore from backup is tested.</p>
             </div>
         </section>
 
@@ -189,11 +190,11 @@
             <h2 class="section-title fade-in">What it doesn't cover yet</h2>
             <div class="case-prose fade-in">
                 <ul class="case-list">
-                    <li>The retrieval eval and the live assistant suite describe the content files, so they don't cover documents an admin creates or edits in the app.</li>
+                    <li>The retrieval eval describes the content files, so it doesn't cover documents an admin creates or edits in the app; the live assistant suite's knowledge scenarios do.</li>
                     <li>The live assistant suite covers the consultancy profile only; the university profile has its own knowledge base but no restored scenario set yet.</li>
-                    <li>There's no email yet, so no password recovery either, and no multi-factor sign-in. Reminders and notifications appear in the app.</li>
+                    <li>Email goes out for appointment confirmations, changes and reminders, but there's no password recovery or email verification yet, and no multi-factor sign-in.</li>
                     <li>One business per deployment, and no payments.</li>
-                    <li>It's a public demo: the guest accounts are shared with every visitor and reset weekly, so it shows the product rather than running a business.</li>
+                    <li>It's a public build: the guest accounts are shared with every visitor and reset weekly, so it shows the product rather than running a business.</li>
                 </ul>
             </div>
         </section>
@@ -217,6 +218,6 @@
         <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
     </footer>
 
-    <script src="script.js?v=20261014f"></script>
+    <script src="script.js?v=20261020h"></script>
 </body>
 </html>

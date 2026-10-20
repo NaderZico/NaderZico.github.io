@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
             arriving.forEach((entry, i) => {
                 const el = entry.target;
-                el.style.setProperty('--delay', Math.min(i, 6) * 80 + 'ms');
+                el.style.setProperty('--delay', Math.min(i, 6) * 200 + 'ms');
                 el.classList.add('in');
                 cardObserver.unobserve(el);
                 // Hand the card back to its normal hover styles once it has landed
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.removeEventListener('transitionend', done);
                     release();
                 });
-                setTimeout(release, 1500 + i * 80);
+                setTimeout(release, 3000 + i * 200);
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
         cards.forEach(el => cardObserver.observe(el));
