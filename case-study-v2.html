@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05080f">
+    <title>Student-Faculty Services v2 case study | Nader Khalil</title>
+    <meta name="description" content="How I rebuilt my senior capstone as a framework-free PHP API and React front end: ten booking rules in one transaction, undo that re-checks every rule, reminders that never double-send, and 500+ tests.">
+    <link rel="canonical" href="https://naderkhalil.dev/case-study-v2.html">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <!-- Social previews -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nader Khalil">
+    <meta property="og:title" content="Student-Faculty Services v2 case study | Nader Khalil">
+    <meta property="og:description" content="How I rebuilt my senior capstone as a framework-free PHP API and React front end: ten booking rules in one transaction, undo that re-checks every rule, reminders that never double-send, and 500+ tests.">
+    <meta property="og:url" content="https://naderkhalil.dev/case-study-v2.html">
+    <meta property="og:image" content="https://naderkhalil.dev/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nader Khalil, Full-Stack Developer">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Student-Faculty Services v2 case study | Nader Khalil">
+    <meta name="twitter:description" content="How I rebuilt my senior capstone as a framework-free PHP API and React front end: ten booking rules in one transaction, undo that re-checks every rule, reminders that never double-send, and 500+ tests.">
+    <meta name="twitter:image" content="https://naderkhalil.dev/assets/og-image.png">
+    <!-- Google Fonts -->
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=20261021n">
+    <script>
+        (function () {
+            // Lets the CSS hide fade-in sections only when scripts can reveal them again.
+            document.documentElement.classList.add('js');
+            // A saved choice wins; on a first visit follow the visitor's OS setting.
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'light' ? '#f4f6fa' : '#05080f');
+        })();
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="navbar" aria-label="Primary">
+        <div class="nav-content">
+            <a href="index.html" class="logo">NK<span class="highlight">.</span></a>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact" class="btn-primary">Contact Me</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+        <main id="main">
+        <section class="page-head">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li aria-current="page">Student-Faculty Services v2</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">Student-Faculty Services v2 <span class="hl">Case Study</span></h1>
+            <p class="case-lead">A full rewrite of my senior capstone: students book 5 to 45 minute office-hour slots, and faculty set their hours, closures, booking rules, and approvals. Undo, reminders, ratings, and a waitlist are built in.</p>
+            <div class="case-cta">
+                <a href="https://student-faculty-services-v2.infinityfree.io" target="_blank" rel="noopener noreferrer" class="btn-primary btn-with-icon" title="Open live project" aria-label="Live build (opens in a new tab)">Live build <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path></svg></a>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">The problem</h2>
+            <div class="case-prose fade-in">
+                <p>A student needs five minutes to check a grade. Another needs forty-five for a project review. Both are chasing the same weekly office hour, often with no idea which slots are still open. One walks across campus for a time that was taken an hour earlier; a faculty member sits in an empty room because a cancellation was never offered to anyone else.</p>
+                <p>Faculty end up running the queue by hand: cap how many students they see, close for a meeting, turn away a request that came too late, approve or decline another, and remember to send a reminder. A shared spreadsheet, a whiteboard, or an email thread leaves everyone guessing how long a meeting should be, whether the room is free, and who is next.</p>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">How it fits together</h2>
+            <div class="case-prose fade-in">
+                <p>v2 turns that manual queue into the product. Faculty publish their weekly hours, set session lengths and rules, close a day when something comes up, and approve requests. Students see the real open slots, book one, cancel and undo for a few seconds, and join a waitlist when the time they need is full. Reminders and ratings close the loop.</p>
+                <p>React 19, TypeScript, Vite, React Router, and TanStack Query run the front end. The API is plain PHP 8.4 with no framework: a router, controllers, services, and repositories over PDO. MariaDB 11.4 holds 13 tables, and the API exposes 46 REST endpoints, 28 of them writes.</p>
+                <p>That is more structure than the first version had, but it is what makes the rules testable. The service layer owns the transaction and the checks; the controllers only validate input and shape the response.</p>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">Four decisions</h2>
+            <div class="case-decisions">
+                <article class="case-decision glass">
+                    <h3>Ten rules, one transaction</h3>
+                    <p>A booking locks the student row, then the faculty row, always in that order, and checks notice, overlaps, limits, closures, and the rest before it writes. The order is deliberate: it cannot deadlock, and it gives one winner under contention.</p>
+                    <p class="case-tradeoff"><strong>Trade-off:</strong> a little more work per booking, in exchange for a rule set that cannot half-apply. An eight-student race for one slot produces exactly one booking.</p>
+                </article>
+                <article class="case-decision glass">
+                    <h3>Undo re-checks every rule</h3>
+                    <p>A cancelled time is held for 15 seconds on the server; the interface offers 10. Undo does not restore a saved booking blindly. It runs the same checks under the same locks, so a slot that was taken in the meantime stays taken.</p>
+                    <p class="case-tradeoff"><strong>Trade-off:</strong> a short hold on the slot, in exchange for undo that cannot create an overlap. An undo racing seven bookings still wins.</p>
+                </article>
+                <article class="case-decision glass">
+                    <h3>Reminders that never double-send</h3>
+                    <p>Each reminder is claimed with a conditional update, so it is created once. Optional email goes through an outbox, is scheduled ahead, and is skipped if the reason for it has gone.</p>
+                    <p class="case-tradeoff"><strong>Trade-off:</strong> a little scheduling machinery, in exchange for a reminder path that survives retries without sending twice.</p>
+                </article>
+                <article class="case-decision glass">
+                    <h3>Tested before every deploy</h3>
+                    <p>339 PHPUnit tests, 143 Vitest tests, and 20 Playwright tests run in CI, with accessibility checks in light and dark. The booking race test was proven by removing the lock: without it, it produced double bookings.</p>
+                    <p class="case-tradeoff"><strong>Trade-off:</strong> a slower pipeline, in exchange for deploy gates that catch the failures that matter.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">Details</h2>
+            <div class="case-prose fade-in">
+                <p>The full feature set and the engineering behind it, including booking correctness, reminders, security, and testing.</p>
+            </div>
+            <div class="case-details-groups">
+                <section class="case-details-group">
+                    <h3>Features</h3>
+                    <div class="case-detail-stack">
+                        <details class="case-detail">
+                            <summary>Students</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Faculty directory: search by name or college, with each person's next free time.</li>
+                                    <li>Faculty profiles: details, weekly office hours with their rooms or online meetings, and rating averages once there are three ratings.</li>
+                                    <li>Booking grid for the next 7 days: pick a session length (5, 15, 30 or 45 minutes) with free-slot counts per length; times inside a faculty member's minimum notice show as "Too soon".</li>
+                                    <li>Limits: at most 5 upcoming appointments, one per faculty member per day, and no overlaps.</li>
+                                    <li>Cancel with a 10-second undo.</li>
+                                    <li>Waitlist when nothing is free (up to 5 at once): one alert when a time opens, in the app and by email if enabled.</li>
+                                    <li>Ratings after an attended appointment: three 1-5 criteria within 14 days, anonymous to faculty.</li>
+                                    <li>Reminders the day before each appointment and before the rating window closes, plus optional email with a verified address.</li>
+                                    <li>Profile with name, major and photo; sign-up with a university-format student ID and a "Suggest an ID" helper.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Faculty</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Dashboard with today's appointments and Close now for emergencies.</li>
+                                    <li>Weekly office-hours blocks (1.5 hours, up to two a day), each in a campus room or online; editing or removing one previews which bookings it would cancel.</li>
+                                    <li>Closures: close a range of time with a preview of who is affected; a 10-second undo restores their bookings, and students are told once it is final.</li>
+                                    <li>Booking rules: minimum notice, session lengths offered, and a gap around each appointment; they apply to new bookings only.</li>
+                                    <li>Approvals: mark finished appointments attended or not, with an optional report, which opens rating for the student.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Everyone</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Notification bell (checked every minute while the tab is visible): bookings, cancellations, closures, reminders, approvals, rating requests and "a time is free"; shows the newest 30 with Show older and Clear read.</li>
+                                    <li>Light and dark themes, phone layouts, and short tips on every page.</li>
+                                    <li>Guest access: one-click student and faculty accounts, or sign in as any of the 155 faculty and 200 sample students; the sample data resets weekly.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+                <section class="case-details-group">
+                    <h3>Technical details</h3>
+                    <div class="case-detail-stack">
+                        <details class="case-detail">
+                            <summary>Architecture</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>React 19, TypeScript, Vite, React Router and TanStack Query on the front end.</li>
+                                    <li>A layered, framework-free PHP 8.4 API: router, controllers, services and repositories over PDO, with 46 REST endpoints (28 of them write endpoints).</li>
+                                    <li>MariaDB 11.4 with 13 tables (11 foreign keys, 11 CHECK constraints and 4 unique keys).</li>
+                                    <li>All times use Asia/Dubai through one clock that tests can freeze.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Booking correctness</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>One transaction locks the student row, then the faculty row (always in that order, so bookings cannot deadlock) and checks ten rules.</li>
+                                    <li>Tested three ways: a test holding a shared lock from a second connection, eight students racing for one slot over real HTTP (exactly one wins), and every rule checked in SQL at four times of the week; the race test fails without the lock.</li>
+                                    <li>Undo: a cancelled time is held for 15 seconds (the interface offers 10), the other side's notification is dated at the end of the window, and undo re-checks every rule under the same locks; an undo racing seven bookings always wins.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Reminders, email and upkeep</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Reminders are claimed with a conditional update, so each is created once; optional emails go through an outbox, are scheduled ahead, and one whose reason is gone is never sent.</li>
+                                    <li>Email addresses are verified with a click that needs a real button press, so mail scanners cannot confirm them.</li>
+                                    <li>New database migrations, the weekly sample-data reset and reminders run automatically on the first request that needs them, under database locks; a test proves the original schema plus every migration equals the current schema.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Security</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Prepared statements (real server-side prepares) for every query that takes user input; ownership is checked in the SQL itself.</li>
+                                    <li>A CSRF token is required on all 28 write endpoints; login throttling by email and IP; strict sessions with a new ID on login and logout.</li>
+                                    <li>Uploaded photos are re-encoded to WebP, which drops metadata and hidden payloads; security headers are set on responses.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Testing and delivery</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>339 PHPUnit tests (unit tests and feature tests through the real router), plus real-HTTP tests through Apache, 143 Vitest tests, and 20 Playwright tests that run on desktop and phone with axe accessibility checks in light and dark mode.</li>
+                                    <li>The booking race test was proven by removing the lock: without it, it produced double bookings; Lighthouse scores 100 for accessibility and best practices on the login page.</li>
+                                    <li>GitHub Actions runs the web and API checks, integration tests and a production-layout check, and deploys only when everything passes; local development and CI use the same MariaDB version as production.</li>
+                                    <li>A README with architecture and data-model diagrams, a handoff guide for new developers, and a deploy guide with the migration procedure.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <h2 class="section-title fade-in">What it doesn't cover yet</h2>
+            <div class="case-prose fade-in">
+                <ul class="case-list">
+                    <li>It is a public build: the guest accounts are shared with every visitor and the sample data resets weekly.</li>
+                    <li>The 155 faculty and 200 students are sample data, not a live university deployment.</li>
+                    <li>The project is a rewrite of a capstone, not a production service with real institutional data.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section case-section">
+            <div class="case-end glass">
+                <div>
+                    <h2>Got something to build?</h2>
+                    <p>Let's talk it through and build it together.</p>
+                </div>
+                <div class="case-cta">
+                    <a href="index.html#contact" class="btn-primary">Get in touch</a>
+                    <a href="index.html#projects" class="link-arrow">Back to projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m11 18-6-6 6-6"></path></svg></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
+    </footer>
+
+    <script src="script.js?v=20261021m"></script>
+</body>
+</html>

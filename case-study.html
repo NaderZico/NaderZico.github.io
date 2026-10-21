@@ -28,7 +28,7 @@
     <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/outfit-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/jetbrains-mono-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20261020i">
+    <link rel="stylesheet" href="styles.css?v=20261021n">
     <script>
         (function () {
             // Lets the CSS hide fade-in sections only when scripts can reveal them again.
@@ -74,11 +74,17 @@
 
     <main id="main">
         <section class="page-head">
-            <a class="back-link" href="index.html#projects">&larr; Back to portfolio</a>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li aria-current="page">AI Booking Platform</li>
+                </ol>
+            </nav>
             <h1 class="page-title">AI Booking Platform <span class="hl">Case Study</span></h1>
             <p class="case-lead">A booking engine where a business is configuration, not code. Clients book from a live calendar, and an AI assistant answers from a knowledge base the admin manages, with citations, and never acts without the user's confirmation.</p>
             <div class="case-cta">
-                <a href="https://booking.naderkhalil.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary lg">Open the live build</a>
+                <a href="https://booking.naderkhalil.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary btn-with-icon" title="Open live project" aria-label="Live build (opens in a new tab)">Live build <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path></svg></a>
             </div>
             <figure class="case-video">
                 <video controls preload="none" playsinline poster="assets/booking-platform-poster.webp" width="1280" height="800">
@@ -92,14 +98,16 @@
         <section class="section case-section">
             <h2 class="section-title fade-in">The problem</h2>
             <div class="case-prose fade-in">
-                <p>An appointment business lives in two places: a calendar that takes the booking but can't answer "what does it cost?" or "how late can I cancel?", and a person who answers all of that by hand, one email at a time. A chatbot could take the questions instead, but giving one the power to book or cancel risks changing a real person's appointment on a wrong guess.</p>
-                <p>Every one of those businesses has the same need, so I built it once instead of per business: a client gets a straight answer from the business's own information, and any change is prepared for them but never runs until they confirm it.</p>
+                <p>It is 9pm. A client wants to know what a consultation costs, how late they can cancel, and whether they can move next week's appointment. The booking page shows times, but not the answers. The owner is replying to the same questions by email, one at a time, after a full day of appointments.</p>
+                <p>The questions repeat every week, and each slow reply is a chance for the client to book somewhere else or arrive expecting a price or service the business does not offer.</p>
+                <p>A receptionist could help during the day, but not at 9pm, and not without the same calendar and policy answers. A chatbot could take the questions, but handing one the power to book or cancel risks moving a real person's appointment on a wrong guess. The business needs an assistant that knows its prices, policies, and calendar, and still asks before it changes anything.</p>
             </div>
         </section>
 
         <section class="section case-section">
             <h2 class="section-title fade-in">How it fits together</h2>
             <div class="case-prose fade-in">
+                <p>AI Booking Platform puts both halves in one place. Clients book from a live calendar, and the assistant answers from the business's own prices, policies, and availability. Any change it suggests waits for the client to confirm, so a wrong guess cannot move an appointment.</p>
                 <p>Every change to data goes through one service layer that holds the rules. The pages, the REST routes, and the assistant all use it, so the assistant can't do anything a click couldn't. Its tools only return proposals, and confirming one calls the same REST API a click would.</p>
             </div>
             <figure class="case-diagram fade-in">
@@ -165,16 +173,153 @@
         </section>
 
         <section class="section case-section">
-            <h2 class="section-title fade-in">Smaller details</h2>
+            <h2 class="section-title fade-in">Details</h2>
             <div class="case-prose fade-in">
-                <ul class="case-list">
-                    <li><strong>Security:</strong> roles and account deactivation are re-checked from the database on every request, every input is validated with Zod, passwords are hashed with bcrypt, the site sends a nonce-based CSP and HSTS, and the database connection uses TLS with certificate verification. Knowledge uploads are text-only and size-capped, with an adversarial test suite behind them.</li>
-                    <li><strong>Concurrency:</strong> a slot is claimed with a conditional update and the client's row is locked, so two people can't book the same slot or beat the per-advisor limit. Race tests run against a real Postgres.</li>
-                    <li><strong>Appointment email:</strong> confirmations, cancellation and reschedule notices, and reminders are queued in an outbox (the notices only after the change commits), then sent by an hourly job through Resend with retries and dedupe keys, so a mail failure never fails a booking. Guest accounts and anyone with email off are skipped.</li>
-                    <li><strong>Changing the database while it's live:</strong> expand-then-contract migrations keep the running site working while the schema changes.</li>
-                    <li><strong>Abuse and cost:</strong> per-user and per-IP rate limits, a shared daily budget for assistant requests on the public build, and a prompt layout that keeps about 93% of the assistant's input served from cache.</li>
-                    <li><strong>Tested:</strong> 357 unit, 320 integration (against Postgres), and 89 end-to-end tests, with automated accessibility scans in light and dark.</li>
-                </ul>
+                <p>The full feature set and the engineering behind it, including security, concurrency, email, and testing.</p>
+            </div>
+            <div class="case-details-groups">
+                <section class="case-details-group">
+                    <h3>Features</h3>
+                    <div class="case-detail-stack">
+                        <details class="case-detail">
+                            <summary>Clients</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Browse every advisor's open slots on a week, month or list calendar, filter by practice area, and book in one click with an optional note.</li>
+                                    <li>Reschedule, cancel and undo, export to a calendar app (.ics), and get reminders and live notifications, plus booking, change and reminder emails when they turn email on.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Advisors</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Publish availability as single slots, back-to-back runs or weekly repeats, and close or reopen slots.</li>
+                                    <li>Move or cancel appointments, and undo their own changes for 15 minutes.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Admins</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>An overview, user management (create clients, advisors or admins, edit, deactivate; each role's main account can't be deactivated), appointment cancellation, and a cross-user activity log.</li>
+                                    <li>Settings without a deploy: booking rules within the engine's safe range, feature toggles (rescheduling, note edits, weekly repeats, undo, a required cancellation reason), per-account abuse limits and the registration policy, effective immediately, journaled, and quoted by the assistant.</li>
+                                    <li>Knowledge base: create, edit, upload, delete and restore the documents the assistant answers from, each visible to everyone or to chosen roles, organised in sections.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>AI assistant</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Scoped to each role; answers questions about services and policies with citations.</li>
+                                    <li>Prepares bookings, reschedules, cancellations, notes and slot changes as confirmation cards that run only after you confirm.</li>
+                                    <li>Understands follow-ups, relative dates and Arabic, never invents prices, and leaves case-specific advice to a consultation.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Everyone</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>One-click guest sign-in for client, advisor and admin, a header switch between the three guest roles, and a weekly sample-data refresh.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+                <section class="case-details-group">
+                    <h3>Technical details</h3>
+                    <div class="case-detail-stack">
+                        <details class="case-detail">
+                            <summary>Architecture</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Next.js 16 (App Router), React 19, TypeScript in strict mode and Tailwind CSS 4.</li>
+                                    <li>Route handlers validate every input with Zod.</li>
+                                    <li>One write path: every change goes through <code>lib/services</code> (checks, then a transaction that journals the change for undo); limits live in <code>lib/rules.ts</code>, which feeds enforcement, the rules popover, the assistant's prompt and the tests.</li>
+                                    <li>Everything is entered and shown in the business's time zone (IANA, DST-safe).</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>The business is configuration</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>The code never names its domain: what clients, providers and appointments are called, the field labels, landing copy, the assistant's scope, guest personas, knowledge base and seed data all come from one domain profile.</li>
+                                    <li>Two profiles ship side by side (a business-setup consultancy and a university), and a unit test fails if a profile's words leak into code.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Configurable knowledge base</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Admins manage it in the app, with no deploy: create and edit documents, upload up to 20 markdown or text files in one all-or-nothing batch, hide and restore them, and file them under sections they add, rename and reorder.</li>
+                                    <li>Per-role visibility: each document, and each section's default for new ones, is visible to everyone or to any set of roles, and retrieval filters on that in SQL, so the assistant never cites a document the asking role can't read.</li>
+                                    <li>Rules feed the assistant: the booking-rules document and the role guides are rendered from templates with the current settings, so a rule changed in Admin is quoted by the assistant straight away.</li>
+                                    <li>Every edit, upload and rule change is chunked, embedded and written through the same service, journaled, and searchable and filterable in the database.</li>
+                                    <li>Uploads are text-only, size-capped by counting bytes and never written to disk, and invisible or bidirectional text is rejected, with an adversarial test suite behind it.</li>
+                                    <li>On the public build, the shared guest admin's changes expire after 24 hours.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Data and concurrency</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>PostgreSQL 16 with pgvector through Prisma 7.</li>
+                                    <li>A slot is claimed with a conditional update; the client's row is locked so overlap and fairness checks (no double-booking, at most 2 upcoming appointments per advisor) cannot race.</li>
+                                    <li>Concurrency is tested against a real Postgres.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>AI assistant</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Retrieval: documents are chunked (about 600 tokens, 12% overlap), embedded as 384-dimension vectors and fetched from pgvector, with each role retrieving only its own guide, filtered in SQL.</li>
+                                    <li>Generation: DeepSeek through the Vercel AI SDK with 15 role-scoped tools and streamed answers with citations.</li>
+                                    <li>Safety: tools only return proposals, a confirmation calls the same REST API a click would, and client-sent tool output is discarded.</li>
+                                    <li>Cost and abuse: per-user and per-IP limits, a shared daily assistant budget on the public build, and a prompt layout that keeps 93–94% of the assistant's input served from the provider's cache on full live runs.</li>
+                                    <li>Evaluation: a retrieval eval of 22 golden questions and a live suite of about 120 checks (injection, data leaks, scope, ambiguity, Arabic, multi-turn) that gates prompt changes.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Security</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>Roles and deactivation are re-read from the database on every request; every API route outside sign-in, registration and health is guarded; admin, slot and booking routes require their role; ownership is checked in the service layer rather than assumed from an id; and admin pages re-check before any data loads.</li>
+                                    <li>bcrypt passwords with timing-safe failed sign-ins, HttpOnly, SameSite and Secure session cookies with Auth.js's CSRF token, per-IP and per-account sign-in limits (Upstash), and a password change that signs out every other device.</li>
+                                    <li>Nonce-based CSP with strict-dynamic, HSTS, nosniff, frame denial, a strict referrer policy and a permissions policy; Zod on every input, JSON-only bodies with byte-counted caps, parameterized Prisma queries, React escaping with chat and knowledge shown as plain text, and database connections that verify TLS certificates.</li>
+                                    <li>A public admin login that's safe to share: the guest admin can't lift abuse limits or close registration, its knowledge changes expire after 24 hours, and stale forms get a conflict instead of overwriting a newer change.</li>
+                                    <li>Sentry error tracking with personal-data collection off; Dependabot and a CI dependency audit; secrets only from the environment, and the Docker image runs as a non-root user.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Appointment email</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>After the write, never inside it: booking confirmations, cancellation and reschedule notices, and reminders are queued in an outbox, and the notices are written only once the change commits, so a mail failure can't fail the booking.</li>
+                                    <li>Sent by an hourly job through Resend, with retries, stale-row recovery and dedupe keys; a bounce or spam complaint turns email off for that account.</li>
+                                    <li>Guest accounts and anyone with email off are skipped, and an account can send itself a test email from Account settings.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="case-detail">
+                            <summary>Testing and delivery</summary>
+                            <div class="case-detail-body">
+                                <ul class="case-detail-list">
+                                    <li>357 unit, 320 integration (against Postgres) and 89 end-to-end tests, including axe accessibility scans (WCAG 2.1 AA) in light and dark.</li>
+                                    <li>CI on every push; a Docker image with managed Postgres, expand-then-contract migrations so the live site keeps working while the database changes, and a weekly sample-data refresh.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </section>
             </div>
         </section>
 
@@ -203,12 +348,12 @@
         <section class="section case-section">
             <div class="case-end glass">
                 <div>
-                    <h2>Want to see more?</h2>
-                    <p>The code is private. I'm happy to walk through it on a call.</p>
+                    <h2>Got something to build?</h2>
+                    <p>Let's talk it through and build it together.</p>
                 </div>
                 <div class="case-cta">
                     <a href="index.html#contact" class="btn-primary">Get in touch</a>
-                    <a href="index.html#projects" class="btn-secondary">Back to projects</a>
+                    <a href="index.html#projects" class="link-arrow">Back to projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m11 18-6-6 6-6"></path></svg></a>
                 </div>
             </div>
         </section>
@@ -218,6 +363,6 @@
         <p>&copy; 2026 Nader Khalil. Built with modern web technologies.</p>
     </footer>
 
-    <script src="script.js?v=20261020h"></script>
+    <script src="script.js?v=20261021m"></script>
 </body>
 </html>
