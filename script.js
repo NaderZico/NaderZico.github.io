@@ -112,21 +112,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
+        const closeMenu = () => {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        };
+
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isOpen = navLinks.classList.toggle('open');
             navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            document.body.classList.toggle('nav-open', isOpen);
         });
+
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-            });
+            link.addEventListener('click', closeMenu);
         });
+
+        // Close on outside tap/click
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
         // Escape closes the open menu and returns focus to its button
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-                navLinks.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
+                closeMenu();
                 navToggle.focus();
             }
         });
