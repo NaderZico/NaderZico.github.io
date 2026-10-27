@@ -70,6 +70,7 @@
     /* Layout */
     --max-width: 1140px;
     --section-padding: 64px 20px;
+    --nav-height-scrolled: 72px;
     --radius: 4px;
 
     /* Motion */
@@ -122,7 +123,6 @@
 }
 
 html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
@@ -601,6 +601,12 @@ main {
 .section {
     padding: var(--section-padding);
     counter-increment: section;
+    scroll-margin-top: var(--nav-height-scrolled);
+}
+
+.feature-card,
+.projects-more {
+    scroll-margin-top: calc(var(--nav-height-scrolled) + 20px);
 }
 
 .section-title {
@@ -1157,7 +1163,7 @@ main {
 
 .page-head + .projects-band,
 .page-head + .section {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .nav-links a[aria-current]:not(.btn-primary) {
@@ -1325,10 +1331,11 @@ main {
 
 .projects-band .section:last-of-type {
     padding-top: 34px;
+    padding-bottom: 34px;
 }
 
 .projects-band .section:only-of-type {
-    padding: 52px 20px;
+    padding: var(--section-padding);
 }
 
 /* 42 Projects */
@@ -2085,6 +2092,9 @@ html.theme-switching *::after {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --nav-height-scrolled: 68px;
+    }
     .skills-list {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: none;
@@ -2253,9 +2263,10 @@ html.theme-switching *::after {
         padding: 0.85rem 0.4rem;
         margin: -0.85rem -0.4rem;
     }
-    .back-link {
+    .back-link,
+    .page-continue a {
         padding: 0.6rem 0;
-        margin: -0.6rem 0 0.6rem;
+        margin: -0.6rem 0;
     }
 }
 
@@ -2548,24 +2559,6 @@ html.theme-switching *::after {
     color: var(--steel);
 }
 
-.case-end {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    max-width: 760px;
-    padding: 1.6rem;
-}
-
-.case-end h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
-}
-
-.case-end p {
-    color: var(--muted);
-}
-
 .case-flow {
     display: none;
     max-width: 760px;
@@ -2596,36 +2589,43 @@ html.theme-switching *::after {
     }
 }
 
-.case-end .case-cta {
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-}
-
-@media (max-width: 480px) {
-    .case-end .case-cta {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    .case-end .case-cta a {
-        flex: 1 1 100%;
-        justify-content: center;
-        padding: 0.7rem 0.5rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.04em;
-        text-align: center;
-    }
-}
-
 @media (max-width: 768px) {
     .case-pair,
     .case-decisions {
         grid-template-columns: minmax(0, 1fr);
     }
-    .case-end {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+}
+
+/* Navigation sentence at the end of projects and case studies */
+.page-continue {
+    max-width: var(--max-width);
+    margin: 0;
+    padding: 1.5rem 20px 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.case-page-continue {
+    max-width: 760px;
+    padding: 1rem 20px 3.5rem;
+}
+
+.page-continue a {
+    color: var(--steel);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.page-continue a[href*="contact"] {
+    color: var(--text);
+}
+
+.page-continue a:hover {
+    color: var(--accent-text);
 }
 
 /* The first block on projects.html sits directly under the page title, so its
@@ -2648,7 +2648,7 @@ html.theme-switching *::after {
 }
 
 .projects-band .section.no-count {
-    padding-top: 36px;
+    padding-top: 0;
 }
 
 /* Keep the four project metrics on one row on normal phones; the fourth label
