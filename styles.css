@@ -299,6 +299,9 @@ ul {
 
 .btn-primary.lg,
 .btn-secondary.lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.85rem 1.5rem;
     font-size: 0.82rem;
 }
@@ -638,7 +641,7 @@ main {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
 }
 
 .about-text p {
@@ -646,6 +649,10 @@ main {
     font-size: 1rem;
     line-height: 1.75;
     margin-bottom: 1.1rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
 }
 
 .about-highlights {
@@ -2066,12 +2073,9 @@ html.theme-switching *::after {
     .hero-cta {
         justify-content: center;
     }
-    /* The block stays centred under the name, but a long paragraph reads
-       better ragged-right than centred */
     .bio {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
+        margin: 0 auto 2rem;
+        text-align: center;
     }
     .about-grid {
         grid-template-columns: 1fr;
@@ -2204,6 +2208,10 @@ html.theme-switching *::after {
         gap: 0.8rem;
         justify-content: center;
     }
+    .btn-primary.lg,
+    .btn-secondary.lg {
+        padding: 0.8rem 1.15rem;
+    }
     /* Phones: a smaller portrait and the buttons right under the title, so the
        name, role, and both calls to action fit in the first screen */
     .hero {
@@ -2221,7 +2229,8 @@ html.theme-switching *::after {
         align-items: center;
     }
     .bio {
-        margin: 1.6rem auto 0;
+        margin: 0 auto 1.5rem;
+        text-align: center;
     }
 }
 
