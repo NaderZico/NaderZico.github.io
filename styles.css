@@ -50,8 +50,8 @@
     --available: #22c55e;
 
     /* Theme-aware surfaces */
-    --grid-line: rgba(120, 166, 216, 0.05);
-    --vignette: rgba(5, 8, 15, 0.9);
+    --grid-line: rgba(120, 166, 216, 0.11);
+    --vignette: rgba(5, 8, 15, 0.85);
     --nav-bg: rgba(5, 8, 15, 0.92);
     --band-a: rgba(120, 166, 216, 0.05);
     --band-b: rgba(120, 166, 216, 0.018);
