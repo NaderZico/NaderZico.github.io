@@ -171,7 +171,7 @@ a {
 }
 
 a:hover {
-    color: var(--accent-text);
+    color: var(--accent-warm);
 }
 
 .hl {
@@ -269,7 +269,7 @@ ul {
 }
 
 .link-arrow:hover {
-    color: var(--accent-text);
+    color: var(--accent-warm);
 }
 
 .btn-with-icon {
@@ -361,7 +361,7 @@ ul {
 }
 
 .nav-links a:not(.btn-primary):hover {
-    color: var(--accent-text);
+    color: var(--accent-warm);
 }
 
 .nav-toggle {
@@ -1155,7 +1155,7 @@ main {
 }
 
 .breadcrumb a:hover {
-    color: var(--accent-text);
+    color: var(--accent-warm);
 }
 
 .breadcrumb [aria-current="page"] {
@@ -2529,7 +2529,7 @@ html.theme-switching *::after {
 }
 
 .case-detail summary:hover {
-    color: var(--accent-text);
+    color: var(--accent-warm);
 }
 
 .case-detail summary:hover::after {
@@ -2634,7 +2634,7 @@ html.theme-switching *::after {
 }
 
 .page-continue a:hover {
-    color: var(--accent-text);
+    color: var(--accent-warm);
 }
 
 /* The first block on projects.html sits directly under the page title, so its
