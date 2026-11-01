@@ -974,11 +974,12 @@ main {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--muted);
+    cursor: default;
     transition: var(--transition-smooth);
 }
 
 .project-tags span:hover {
-    border-color: var(--accent-warm);
+    border-color: var(--border-strong);
     color: var(--text);
     background: var(--surface-2);
 }
