@@ -724,11 +724,11 @@ main {
     line-height: 1.6;
 }
 
-/* Experience */
+/* Experience: compact executive layout with full-width highlights */
 .timeline {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
     max-width: none;
     margin: 0;
 }
@@ -739,51 +739,83 @@ main {
 }
 
 .timeline-item {
-    margin: 0;
-    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--border);
     transition: var(--transition-smooth);
 }
 
 .timeline-item:hover {
-    border-color: var(--border-strong);
+    border-bottom-color: var(--border-strong);
+}
+
+.timeline-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+}
+
+.timeline-title-wrap {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.timeline-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.timeline-sep {
+    color: var(--steel);
+    font-size: 0.95rem;
+}
+
+.timeline-company {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0;
 }
 
 .timeline-date {
     font-family: var(--font-mono);
     color: var(--steel);
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-role {
-    font-size: 1.15rem;
-    margin-bottom: 0.15rem;
-}
-
-.timeline-company {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 0.8rem;
+    white-space: nowrap;
 }
 
 .timeline-details {
-    padding-left: 1rem;
+    list-style: none;
+    padding-left: 1.1rem;
     color: var(--muted);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .timeline-details li {
     position: relative;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
+}
+
+.timeline-details li:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-details li::before {
     content: '>';
     font-family: var(--font-mono);
     position: absolute;
-    left: -1rem;
+    left: -1.1rem;
     color: var(--steel);
 }
 
@@ -1846,6 +1878,23 @@ html:has(dialog[open]) {
         grid-template-columns: minmax(0, 1fr);
         gap: 0.35rem;
     }
+    .timeline .timeline-item {
+        padding: 1.15rem 0;
+        gap: 0.45rem;
+    }
+    .timeline-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    .timeline-title-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+    }
+    .timeline-sep {
+        display: none;
+    }
     .availability {
         border-radius: 14px;
     }
@@ -2144,8 +2193,8 @@ html.theme-switching *::after {
     .section-title {
         font-size: 1.7rem;
     }
-    .timeline {
-        grid-template-columns: 1fr;
+    .timeline-head {
+        gap: 0.35rem 1rem;
     }
     .projects-band {
         background: transparent;
